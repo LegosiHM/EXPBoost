@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bj5yy2c3l8l1g"
+path="res://.godot/imported/click(Maybe for remoteTV).mp3-fd7a19fb2ef09f6a11312564608825e3.mp3str"
+
+[deps]
+
+source_file="res://NodeScenes/Audio/click(Maybe for remoteTV).mp3"
+dest_files=["res://.godot/imported/click(Maybe for remoteTV).mp3-fd7a19fb2ef09f6a11312564608825e3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
