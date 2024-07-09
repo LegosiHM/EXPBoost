@@ -9,8 +9,9 @@ const FLUFFING_A_DUCK = preload("res://NodeScenes/Audio/Fluffing a Duck.mp3")
 @onready var b_gmusic = $BGmusic
 
 func _ready():
-	b_gmusic.stream = DOOM_CUT
-	b_gmusic.play()
+	#b_gmusic.stream = DOOM_CUT
+	#b_gmusic.play()
+	pass
 
 func ChangeBGMusic():
 	if b_gmusic.stream == DOOM_CUT:

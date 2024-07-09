@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cort7ie01g4r6"]
+
+[ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://NodeScenes/Player/car.tscn" id="1_8otae"]
+[ext_resource type="Texture2D" uid="uid://cm2hjuf3kn5dw" path="res://icon.svg" id="2_2nwqm"]
+[ext_resource type="Script" path="res://Script/DashCoolDownText.gd" id="3_3tgwb"]
+[ext_resource type="PackedScene" uid="uid://d2e65gcf8e2sc" path="res://NodeScenes/UI/UITEST.tscn" id="4_ujh7l"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(337, 280)
+scale = Vector2(13.3537, 10.0022)
+texture = ExtResource("2_2nwqm")
+
+[node name="Car" parent="." instance=ExtResource("1_8otae")]
+position = Vector2(113, 102)
+
+[node name="Camera2D" type="Camera2D" parent="Car"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Cooldown" type="Label" parent="CanvasLayer"]
+offset_left = 49.0
+offset_top = 18.0
+offset_right = 89.0
+offset_bottom = 41.0
+scale = Vector2(2.15081, 2.13454)
+text = "0"
+script = ExtResource("3_3tgwb")
+
+[node name="UITEST" parent="CanvasLayer" instance=ExtResource("4_ujh7l")]
+offset_left = 1055.0
+offset_top = 15.0
+offset_right = 1055.0
+offset_bottom = 15.0
