@@ -6,9 +6,9 @@ extends CharacterBody2D
 #var desired_velocity := Vector2.ZERO
 #var steering_velocity := Vector2.ZERO
 
-var wheel_base = 70
-var steering_angle = 15
-var engine_power = 2500
+@export var wheel_base: int = 70
+@export_range(0,180) var steering_angle: int = 15
+@export var engine_power = 2500
 var friction = -1.1
 var drag = -0.002
 var braking = -600

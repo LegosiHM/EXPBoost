@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cchsa1gv6nht0"]
 
 [ext_resource type="Script" path="res://Script/carMove.gd" id="1_drm0c"]
-[ext_resource type="Texture2D" uid="uid://d2i8gktk5t8g1" path="res://Sprite/Car.png" id="1_pi82a"]
+[ext_resource type="Texture2D" uid="uid://bhb37ekydd87k" path="res://Sprite/Car.png" id="1_pi82a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0s0u"]
 radius = 20.0
@@ -15,5 +15,5 @@ texture = ExtResource("1_pi82a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-scale = Vector2(1.329, 1.51043)
+scale = Vector2(1.329, 1.51953)
 shape = SubResource("CapsuleShape2D_h0s0u")
