@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @export var wheel_base: int = 70
 @export_range(0,180) var steering_angle: int = 15
-@export var engine_power = 2500
+@export var engine_power = 1500
 var friction = -1.1
 var drag = -0.002
 var braking = -600
@@ -22,7 +22,7 @@ var traction_slow = 0.7
 var acceleration = Vector2.ZERO
 var steer_direction
 
-var dashSpeed = 1000
+var dashSpeed = 250
 var dashCooldown = 0.5
 var dashDuration = 0.1
 var canDash = true

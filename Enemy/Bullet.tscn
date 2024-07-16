@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw8jlp1t7ea74"]
 
-[ext_resource type="Script" path="res://Enemy_Test 1/Bullet.gd" id="1_sruda"]
-[ext_resource type="Texture2D" uid="uid://cm2hjuf3kn5dw" path="res://icon.svg" id="2_6vhn2"]
+[ext_resource type="Script" path="res://Enemy/Bullet.gd" id="1_1y7c6"]
+[ext_resource type="Texture2D" uid="uid://d35nl6l3il0lp" path="res://Sprite/All_Fire_Bullet_Pixel_16x16_00-export.png" id="2_6qwrd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0crfd"]
 size = Vector2(36, 35)
 
 [node name="Bullet" type="Area2D"]
-script = ExtResource("1_sruda")
+script = ExtResource("1_1y7c6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_6vhn2")
+texture = ExtResource("2_6qwrd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-4.76837e-07, -4.76837e-07)

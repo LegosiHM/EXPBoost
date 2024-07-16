@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ruslw2o6uk8"]
+
+[ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_r5xsq"]
+[ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Enemy/Bullet.tscn" id="2_57xui"]
+[ext_resource type="Texture2D" uid="uid://ffb354m3dgr0" path="res://Sprite/Crystal Knight 2.png" id="3_hu7xq"]
+[ext_resource type="PackedScene" uid="uid://b17wufy4q8xj6" path="res://Enemy/Laser.tscn" id="3_xe0ga"]
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_r5xsq")
+bullet_node = ExtResource("2_57xui")
+laser_node = ExtResource("3_xe0ga")
+
+[node name="Speed" type="Timer" parent="."]
+wait_time = 0.07
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("3_hu7xq")
+
+[connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
