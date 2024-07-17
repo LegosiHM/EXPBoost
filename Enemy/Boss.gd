@@ -27,6 +27,7 @@ func spawn_laser(offset):
 func despawn_laser():
 	for i in range(lasers.size()-1, -1, -1):
 		lasers[i].queue_free()
+		lasers.remove_at(i)
 		
 
 #func _on_speed_timeout():
