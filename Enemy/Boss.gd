@@ -23,18 +23,23 @@ func spawn_laser(offset):
 	add_child(laser)
 	laser.position = offset
 	lasers.append(laser)
-
-func _on_speed_timeout():
-	shoot(theta)
 	
-func _process(delta):
-	# Rotate the lasers around the boss
-	for laser in lasers:
-		laser.rotation += rotation_speed * delta
+func despawn_laser():
+	for i in range(lasers.size()-1, -1, -1):
+		lasers[i].queue_free()
+		
 
-
-func _ready():
-	spawn_laser(Vector2(100, 0))
-	spawn_laser(Vector2(-100, 0))
-	spawn_laser(Vector2(0, 100))
-	spawn_laser(Vector2(0, -100))
+#func _on_speed_timeout():
+	#shoot(theta)
+	
+#func _process(delta):
+	## Rotate the lasers around the boss
+	#for laser in lasers:
+		#laser.rotation += rotation_speed * delta
+#
+#
+#func _ready():
+	#spawn_laser(Vector2(100, 0))
+	#spawn_laser(Vector2(-100, 0))
+	#spawn_laser(Vector2(0, 100))
+	#spawn_laser(Vector2(0, -100))
