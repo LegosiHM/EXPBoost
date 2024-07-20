@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cchsa1gv6nht0"]
+[gd_scene load_steps=5 format=3 uid="uid://cchsa1gv6nht0"]
 
 [ext_resource type="Script" path="res://Script/carMove.gd" id="1_drm0c"]
 [ext_resource type="Texture2D" uid="uid://bhb37ekydd87k" path="res://Sprite/Car.png" id="1_pi82a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0ypp"]
+radius = 35.0
+height = 144.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0s0u"]
 radius = 20.0
@@ -13,7 +17,22 @@ script = ExtResource("1_drm0c")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pi82a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PerfectDodgeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectDodgeArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t0ypp")
+debug_color = Color(0.878492, 0.255228, 0.574528, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
 rotation = 1.5708
 scale = Vector2(1.329, 1.51953)
 shape = SubResource("CapsuleShape2D_h0s0u")
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[node name="PerfectDashTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="PerfectDodgeArea" to="." method="_on_perfect_dodge_area_area_entered"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="PerfectDashTimer" to="." method="_on_perfect_dash_timer_timeout"]

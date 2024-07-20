@@ -6,6 +6,7 @@ extends CharacterBody2D
 #var desired_velocity := Vector2.ZERO
 #var steering_velocity := Vector2.ZERO
 
+# Movement variables
 @export var wheel_base: int = 70
 @export_range(0,180) var steering_angle: int = 15
 @export var engine_power = 1500
@@ -22,12 +23,25 @@ var traction_slow = 0.7
 var acceleration = Vector2.ZERO
 var steer_direction
 
+# Dash variables
 var dashSpeed = 250
 var dashCooldown = 0.5
 var dashDuration = 0.1
 var canDash = true
 var isDashing = false
+var perfect_dash_timer = 0.7
 
+# Input delay for perfect dash
+var dash_input_window = 1
+var last_dash_input_time = -2
+
+# References to the Timer nodes
+@onready var dash_timer_node = $DashTimer
+@onready var perfect_dash_timer_node = $PerfectDashTimer
+
+# Perfect dodge area
+@onready var perfect_dodge_area = $PerfectDodgeArea
+	
 #func _physics_process(delta: float) -> void:
 func _physics_process(delta):
 	
@@ -44,6 +58,8 @@ func _physics_process(delta):
 	calculate_steering(delta)
 	velocity += acceleration * delta
 	move_and_slide()
+	if Input.is_action_just_pressed("Dash") and canDash:
+		last_dash_input_time = Time.get_ticks_msec()
 
 func apply_friction():
 	if velocity.length() < 5:
@@ -76,6 +92,28 @@ func StartDash():
 	isDashing = false
 	await get_tree().create_timer(dashCooldown).timeout
 	canDash = true
+
+func _start_perfect_dash():
+	isDashing = true
+	canDash = false
+	perfect_dash_timer_node.start(perfect_dash_timer)
+	await get_tree().create_timer(dashDuration).timeout
+	isDashing = false
+	# Additional feedback for perfect dash
+	_perfect_dash_feedback()
+	canDash = true
+		
+func _perfect_dash_feedback():
+	# Implement screen shake, slow motion, and other feedback effects here.
+	print("Perfect!")
+	pass
+
+func _on_perfect_dodge_area_area_entered(area):
+	if area.is_in_group("Bullet"):
+		print("collided")
+		var current_time = Time.get_ticks_msec()
+		if current_time - last_dash_input_time <= int(dash_input_window * 1000) and canDash:
+			_start_perfect_dash()
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base/2.0

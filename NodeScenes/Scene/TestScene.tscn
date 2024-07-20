@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba6qtimtbqhop"]
+[gd_scene load_steps=5 format=3 uid="uid://ba6qtimtbqhop"]
 
-[ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Enemy/Boss.tscn" id="2_f7ka5"]
 [ext_resource type="PackedScene" uid="uid://d2e65gcf8e2sc" path="res://NodeScenes/UI/UITEST.tscn" id="2_iei8l"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://NodeScenes/Player/car.tscn" id="3_03p4p"]
+[ext_resource type="Texture2D" uid="uid://cm2hjuf3kn5dw" path="res://icon.svg" id="4_6lp7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_affnj"]
+size = Vector2(48, 715)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(560, 313)
@@ -13,13 +16,17 @@ offset_top = -32.0
 offset_right = 78.0
 offset_bottom = -32.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(2.35983, 4.4631)
-enabled = false
-
-[node name="Boss" parent="." instance=ExtResource("2_f7ka5")]
-position = Vector2(1, 2)
-alpha = 3.0
-
 [node name="Car2" parent="." instance=ExtResource("3_03p4p")]
 scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(307, 44.5)
+shape = SubResource("RectangleShape2D_affnj")
+debug_color = Color(0, 0.60037, 0.697864, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(306, 47.5)
+scale = Vector2(0.375, 5.61719)
+texture = ExtResource("4_6lp7f")
