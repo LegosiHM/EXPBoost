@@ -18,10 +18,10 @@ func shoot(angle):
 	bullet.direction = get_vector(angle)
 	get_tree().current_scene.call_deferred("add_child", bullet)
 	
-func spawn_laser(offset):
+func spawn_laser(angle):
 	var laser = laser_node.instantiate()
 	add_child(laser)
-	laser.position = offset
+	laser.rotation = angle
 	lasers.append(laser)
 	
 func despawn_laser():

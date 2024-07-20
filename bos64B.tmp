@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl8g2fhmn8yo0"]
+
+[ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Enemy/Boss.tscn" id="1_7khyr"]
+[ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://NodeScenes/Player/car.tscn" id="2_8lh85"]
+
+[node name="BossRoom" type="Node2D"]
+
+[node name="Boss" parent="." instance=ExtResource("1_7khyr")]
+position = Vector2(630, 360)
+alpha = 6.0
+
+[node name="Car2" parent="." instance=ExtResource("2_8lh85")]
+position = Vector2(616, 321)
+scale = Vector2(0.5, 0.5)

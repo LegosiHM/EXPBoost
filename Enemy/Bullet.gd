@@ -4,7 +4,8 @@ extends Area2D
 var direction = Vector2.RIGHT
 
 func _ready():
-	print("Bullet spawned at position:", position)
+	#print("Bullet spawned at position:", position)
+	pass
 
 func _process(delta):
 	translate(direction * speed * delta)

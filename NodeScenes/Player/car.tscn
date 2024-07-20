@@ -15,6 +15,7 @@ height = 83.4198
 script = ExtResource("1_drm0c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("1_pi82a")
 
 [node name="PerfectDodgeArea" type="Area2D" parent="."]
