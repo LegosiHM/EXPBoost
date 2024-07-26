@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e8n863xc7ri"
-path="res://.godot/imported/Laser-Head.png-dc898aac6288a8e2eaa1c7d4f47655dc.ctex"
+uid="uid://bacjblwyapnir"
+path="res://.godot/imported/Heart.png-634fd30eb61db6217876633c7e4feb2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/Laser-Head.png"
-dest_files=["res://.godot/imported/Laser-Head.png-dc898aac6288a8e2eaa1c7d4f47655dc.ctex"]
+source_file="res://Sprite/Heart.png"
+dest_files=["res://.godot/imported/Heart.png-634fd30eb61db6217876633c7e4feb2b.ctex"]
 
 [params]
 

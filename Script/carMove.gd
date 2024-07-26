@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+#Health
+const maxHealth: int = 3
+@onready var currentHealth: int = maxHealth
+var can_take_damage: bool = true
+
 #@export var max_speed := 300;
 #@export_range(0, 10, 0.1) var drag_factor := 0.1
 #
@@ -9,35 +14,34 @@ extends CharacterBody2D
 # Movement variables
 @export var wheel_base: int = 70
 @export_range(0,180) var steering_angle: int = 15
-@export var engine_power = 1500
-var friction = -1.1
-var drag = -0.002
-var braking = -600
-var max_speed_reverse = 500
-var slip_speed = 600
+@export var engine_power: int = 1500
+@export var friction: float = -1.1
+@export var drag: float = -0.002
+@export var braking: int = -600
+@export var max_speed_reverse: int = 500
+@export var slip_speed:int = 600
 
 # if 1.0 then normal
-var traction_fast = 0.1
-var traction_slow = 0.7
+@export_range(0,1.0) var traction_fast: float = 0.1
+@export_range(0,1.0) var traction_slow: float = 0.7
 
 var acceleration = Vector2.ZERO
 var steer_direction
 
 # Dash variables
-var dashSpeed = 250
-var dashCooldown = 0.5
-var dashDuration = 0.1
-var canDash = true
-var isDashing = false
-var perfect_dash_timer = 0.7
+@export var dashSpeed: int = 250
+var dashCooldown: float = 0.5
+var dashDuration: float = 0.1
+var canDash: bool = true
+var isDashing: bool = false
+var perfect_dash_timer: float = 0.7
 
-# Input delay for perfect dash
-var dash_input_window = 1
-var last_dash_input_time = -2
+# PerfectDash Effect
+@export var ghost_node : PackedScene
+@onready var ghost_timer = $GhostTimer
+@onready var slowmoController = $SlowmoController
+@export var slowdown_time = 1
 
-# References to the Timer nodes
-@onready var dash_timer_node = $DashTimer
-@onready var perfect_dash_timer_node = $PerfectDashTimer
 
 # Perfect dodge area
 @onready var perfect_dodge_area = $PerfectDodgeArea
@@ -58,8 +62,6 @@ func _physics_process(delta):
 	calculate_steering(delta)
 	velocity += acceleration * delta
 	move_and_slide()
-	if Input.is_action_just_pressed("Dash") and canDash:
-		last_dash_input_time = Time.get_ticks_msec()
 
 func apply_friction():
 	if velocity.length() < 5:
@@ -80,7 +82,9 @@ func get_input():
 	if Input.is_action_pressed("brake"):
 		acceleration = transform.x * braking
 	
-	if Input.is_action_just_pressed("Dash") and canDash:
+	if Input.is_action_just_pressed("Dash") and canDash and $Timer.is_stopped() == false:
+		_start_perfect_dash()
+	elif Input.is_action_just_pressed("Dash") and canDash:
 		StartDash()
 	if isDashing:
 		velocity += transform.x * dashSpeed
@@ -96,24 +100,26 @@ func StartDash():
 func _start_perfect_dash():
 	isDashing = true
 	canDash = false
-	perfect_dash_timer_node.start(perfect_dash_timer)
+	ghost_timer.start()
 	await get_tree().create_timer(dashDuration).timeout
+	ghost_timer.stop()
 	isDashing = false
 	# Additional feedback for perfect dash
 	_perfect_dash_feedback()
 	canDash = true
 		
 func _perfect_dash_feedback():
-	# Implement screen shake, slow motion, and other feedback effects here.
+	Engine.time_scale = 0.1
 	print("Perfect!")
-	pass
+	await get_tree().create_timer(slowdown_time).timeout
+	Engine.time_scale = 1.0
+	
 
-func _on_perfect_dodge_area_area_entered(area):
-	if area.is_in_group("Bullet"):
+func _on_perfect_dodge_area_area_entered(perfect_dodge_area):
+	if perfect_dodge_area.is_in_group("Bullet"):
 		print("collided")
-		var current_time = Time.get_ticks_msec()
-		if current_time - last_dash_input_time <= int(dash_input_window * 1000) and canDash:
-			_start_perfect_dash()
+		$Timer.start()
+		
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base/2.0
@@ -130,3 +136,22 @@ func calculate_steering(delta):
 	if d < 0:
 		velocity = -new_heading * min(velocity.length(), max_speed_reverse)
 	rotation = new_heading.angle()
+
+
+func _on_hurtbox_area_entered(hitbox):
+	self.currentHealth -= 1
+	print(currentHealth)
+
+
+func _on_timer_timeout():
+	print("Timer Expired")
+
+
+func add_ghost():
+	var ghost = ghost_node.instantiate()
+	ghost.set_property(position, $Sprite2D.scale)
+	get_tree().current_scene.add_child(ghost)
+
+
+func _on_ghost_timer_timeout():
+	add_ghost()

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl8g2fhmn8yo0"]
+[gd_scene load_steps=3 format=3 uid="uid://brlyi3xi4a0c"]
 
-[ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Enemy/Boss.tscn" id="1_7khyr"]
+[ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Enemy/Scene/Boss.tscn" id="1_7khyr"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://NodeScenes/Player/car.tscn" id="2_8lh85"]
 
 [node name="BossRoom" type="Node2D"]

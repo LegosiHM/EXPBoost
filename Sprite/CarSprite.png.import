@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ffb354m3dgr0"
-path="res://.godot/imported/Crystal Knight 2.png-097dc54c1bbab5ecd0bf77a791fe4979.ctex"
+uid="uid://y1udlfdnxm1b"
+path="res://.godot/imported/CarSprite.png-602bf8f384fa162a0cdca7bdeec2e475.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/Crystal Knight 2.png"
-dest_files=["res://.godot/imported/Crystal Knight 2.png-097dc54c1bbab5ecd0bf77a791fe4979.ctex"]
+source_file="res://Sprite/CarSprite.png"
+dest_files=["res://.godot/imported/CarSprite.png-602bf8f384fa162a0cdca7bdeec2e475.ctex"]
 
 [params]
 

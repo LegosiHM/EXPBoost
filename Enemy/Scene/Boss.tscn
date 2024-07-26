@@ -1,16 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://c5ruslw2o6uk8"]
 
-[ext_resource type="Script" path="res://Enemy/Boss.gd" id="1_r5xsq"]
-[ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Enemy/Bullet.tscn" id="2_57xui"]
-[ext_resource type="PackedScene" uid="uid://5bestnx8ws23" path="res://Enemy/NewLaser.tscn" id="3_cbw0u"]
-[ext_resource type="Texture2D" uid="uid://ffb354m3dgr0" path="res://Sprite/Crystal Knight 2.png" id="3_hu7xq"]
-[ext_resource type="Script" path="res://Enemy/StateMachine.gd" id="5_7xa2w"]
+[ext_resource type="Script" path="res://Enemy/Script/Boss.gd" id="1_r5xsq"]
+[ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Enemy/Scene/Bullet.tscn" id="2_57xui"]
+[ext_resource type="PackedScene" uid="uid://5bestnx8ws23" path="res://Enemy/Scene/NewLaser.tscn" id="3_cbw0u"]
+[ext_resource type="Texture2D" uid="uid://bgmcu07pv4mjj" path="res://Sprite/Boss.png" id="4_bdn3p"]
+[ext_resource type="Script" path="res://Enemy/Script/StateMachine.gd" id="5_7xa2w"]
 [ext_resource type="Script" path="res://Script/pattern1.gd" id="6_0wljs"]
 [ext_resource type="Script" path="res://Script/idle.gd" id="7_c86kf"]
 [ext_resource type="Script" path="res://Script/pattern2.gd" id="7_nsb0i"]
 
 [node name="Boss" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_r5xsq")
+alpha = 2.0
 bullet_node = ExtResource("2_57xui")
 laser_node = ExtResource("3_cbw0u")
 
@@ -20,8 +22,8 @@ autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-scale = Vector2(2.4, 2.4)
-texture = ExtResource("3_hu7xq")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_bdn3p")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_7xa2w")
@@ -43,9 +45,11 @@ anticipateTime = 2.0
 phaseTime = 5.0
 
 [node name="Timer" type="Timer" parent="StateMachine"]
+wait_time = 0.5
 one_shot = true
 
 [node name="Timer2" type="Timer" parent="StateMachine"]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

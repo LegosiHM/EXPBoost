@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgfs2x0xni1r0"]
+
+[ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://NodeScenes/Player/car.tscn" id="2_i0qme"]
+[ext_resource type="Texture2D" uid="uid://cdrnm8j3b7xse" path="res://IMG_7901.png" id="2_machg"]
+[ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Enemy/Boss.tscn" id="3_c04mj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8tui"]
+size = Vector2(20, 3.94298)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjvnn"]
+radius = 84.006
+
+[node name="Main" type="Node2D"]
+position = Vector2(54, -6)
+
+[node name="Img7901" type="Sprite2D" parent="."]
+position = Vector2(586, 368)
+scale = Vector2(2, 2)
+texture = ExtResource("2_machg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(580, 53)
+scale = Vector2(5.26398, -1.78235)
+shape = SubResource("RectangleShape2D_k8tui")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(528, 50, 463, 58, 353, 80, 362, 84, 465, 66, 529, 56)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(351, 79, 311, 91, 230, 130, 179, 169, 119, 237, 85, 299, 103, 305, 125, 259, 145, 229, 170, 197, 194, 174, 236, 141, 276, 118, 306, 104, 355, 87, 366, 83)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(85, 298, 104, 305, 94, 329, 91, 353, 96, 389, 107, 423, 122, 458, 138, 478, 159, 504, 143, 511, 114, 476, 77, 390)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(159, 504, 159, 504, 179, 524, 226, 560, 283, 590, 334, 609, 382, 625, 471, 644, 528, 651, 527, 665, 303, 613, 142, 512)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(528, 651, 527, 666, 591, 668, 751, 647, 828, 627, 927, 588, 975, 556, 964, 547, 931, 568, 892, 588, 824, 614, 743, 634, 637, 652)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(964, 547, 974, 556, 993, 541, 1042, 497, 1076, 448, 1094, 388, 1095, 351, 1089, 303, 1074, 268, 1051, 238, 1041, 250, 1061, 287, 1075, 321, 1081, 363, 1076, 391, 1062, 431, 1042, 470, 1021, 494, 993, 523)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(633, 55, 715, 65, 801, 83, 868, 104, 927, 136, 989, 180, 1028, 229, 1041, 250, 1051, 238, 1006, 179, 918, 117, 843, 84, 760, 63, 677, 51, 632, 50)
+
+[node name="Car" parent="." instance=ExtResource("2_i0qme")]
+position = Vector2(605, 521)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Boss" parent="." instance=ExtResource("3_c04mj")]
+position = Vector2(580, 350)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boss"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/StaticBody2D"]
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_xjvnn")
