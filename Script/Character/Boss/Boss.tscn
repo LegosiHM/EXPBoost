@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5ruslw2o6uk8"]
+
+[ext_resource type="Script" path="res://Script/Character/Boss/Boss.gd" id="1_gnb6x"]
+[ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Script/Projectiles/Bullet.tscn" id="2_ydprj"]
+[ext_resource type="PackedScene" uid="uid://5bestnx8ws23" path="res://Script/Projectiles/NewLaser.tscn" id="3_yj5v3"]
+[ext_resource type="Texture2D" uid="uid://bgmcu07pv4mjj" path="res://Assets/Sprite/Boss.png" id="4_msp1m"]
+[ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/StateMachine.gd" id="5_mtd8l"]
+[ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/idle.gd" id="6_ny2l7"]
+[ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/pattern1.gd" id="7_nhxwo"]
+[ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/pattern2.gd" id="8_cfsff"]
+
+[node name="Boss" type="CharacterBody2D"]
+collision_mask = 4
+script = ExtResource("1_gnb6x")
+alpha = 2.0
+bullet_node = ExtResource("2_ydprj")
+laser_node = ExtResource("3_yj5v3")
+
+[node name="Speed" type="Timer" parent="."]
+wait_time = 0.07
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_msp1m")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_mtd8l")
+initial_state = NodePath("pattern1")
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("6_ny2l7")
+phaseTime = 7.0
+patterns = Array[StringName]([&"pattern1", &"pattern2"])
+
+[node name="pattern1" type="Node" parent="StateMachine"]
+script = ExtResource("7_nhxwo")
+anticipateTime = 1.0
+phaseTime = 2.0
+
+[node name="pattern2" type="Node" parent="StateMachine"]
+script = ExtResource("8_cfsff")
+anticipateTime = 2.0
+phaseTime = 5.0
+
+[node name="Timer" type="Timer" parent="StateMachine"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="StateMachine"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

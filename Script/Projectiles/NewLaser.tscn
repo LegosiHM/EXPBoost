@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://5bestnx8ws23"]
+
+[ext_resource type="Script" path="res://Script/Projectiles/NewLaser.gd" id="1_rvtjp"]
+[ext_resource type="Texture2D" uid="uid://d4djou028bxml" path="res://Assets/Sprite/Laser.png" id="2_rw6h2"]
+[ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="3_jkax2"]
+[ext_resource type="PackedScene" uid="uid://cg3sti03jkode" path="res://Script/Character/Player/Abilities/perfect_dodge_area.tscn" id="4_btiqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00efh"]
+size = Vector2(770, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3is2s"]
+size = Vector2(831, 117)
+
+[node name="NewLaser" type="Node2D"]
+script = ExtResource("1_rvtjp")
+rotateSpeed = 0.005
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(8.02083, 1)
+texture = ExtResource("2_rw6h2")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_jkax2")]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_00efh")
+
+[node name="PerfectDodgeArea" parent="." instance=ExtResource("4_btiqe")]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="PerfectDodgeArea" index="0"]
+position = Vector2(3.5, 8.5)
+shape = SubResource("RectangleShape2D_3is2s")
+
+[editable path="Hitbox"]
+[editable path="PerfectDodgeArea"]

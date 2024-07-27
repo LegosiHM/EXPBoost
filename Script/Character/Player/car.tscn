@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://cchsa1gv6nht0"]
+
+[ext_resource type="Script" path="res://Script/Character/Player/Abilities/carMove.gd" id="1_drm0c"]
+[ext_resource type="PackedScene" uid="uid://c11sypy54k87c" path="res://Script/Effects/ghost.tscn" id="2_5rpq3"]
+[ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/CarSprite.png" id="2_06do7"]
+[ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="3_om4g8"]
+[ext_resource type="PackedScene" uid="uid://baiphjuptsmq6" path="res://Script/Effects/slowmo_controller.tscn" id="5_fymwc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0o5"]
+radius = 32.0
+height = 110.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0ypp"]
+radius = 33.0
+height = 144.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxwl8"]
+radius = 33.0
+height = 116.0
+
+[node name="Car" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_drm0c")
+ghost_node = ExtResource("2_5rpq3")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_om4g8")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+light_mask = 4
+visibility_layer = 3
+position = Vector2(-6, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3x0o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_06do7")
+
+[node name="PerfectDodgeEnter" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PerfectDodgeEnter"]
+position = Vector2(-8, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t0ypp")
+debug_color = Color(0.878492, 0.255228, 0.574528, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-8, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xxwl8")
+debug_color = Color(0.215977, 0.616686, 0.484408, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GhostTimer" type="Timer" parent="."]
+wait_time = 0.07
+
+[node name="SlowmoController" parent="." instance=ExtResource("5_fymwc")]
+slowmo_time_scale = 0.1
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="PerfectDodgeEnter" to="." method="_on_perfect_dodge_area_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]
+
+[editable path="Hurtbox"]

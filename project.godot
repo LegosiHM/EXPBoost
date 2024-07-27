@@ -13,11 +13,11 @@ config_version=5
 config/name="EXPBoost2024"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Sprite/icon.svg"
+config/icon="res://Assets/Sprite/icon.svg"
 
 [autoload]
 
-AudioManager="*res://NodeScenes/Audio/audio_manager.tscn"
+AudioManager="*res://Script/Managers/audio_manager.tscn"
 
 [display]
 
