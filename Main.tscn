@@ -47,6 +47,7 @@ polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155
 
 [node name="Boss" parent="." instance=ExtResource("3_3vejh")]
 position = Vector2(620, 340)
+alpha = 7.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Boss"]
 offset_left = -328.0
