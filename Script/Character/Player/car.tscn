@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cchsa1gv6nht0"]
+[gd_scene load_steps=11 format=3 uid="uid://cchsa1gv6nht0"]
 
 [ext_resource type="Script" path="res://Script/Character/Player/Abilities/carMove.gd" id="1_drm0c"]
 [ext_resource type="PackedScene" uid="uid://c11sypy54k87c" path="res://Script/Effects/ghost.tscn" id="2_5rpq3"]
 [ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/CarSprite.png" id="2_06do7"]
 [ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="3_om4g8"]
 [ext_resource type="PackedScene" uid="uid://baiphjuptsmq6" path="res://Script/Effects/slowmo_controller.tscn" id="5_fymwc"]
+[ext_resource type="Script" path="res://Script/Character/Player/trailSpawner.gd" id="6_ew3fa"]
+[ext_resource type="PackedScene" uid="uid://blc4kwmw6lu08" path="res://Script/Character/Player/Abilities/footTrails.tscn" id="7_dtfsp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0o5"]
 radius = 32.0
@@ -66,6 +68,15 @@ wait_time = 0.07
 
 [node name="SlowmoController" parent="." instance=ExtResource("5_fymwc")]
 slowmo_time_scale = 0.1
+
+[node name="trailSpawner" type="Node2D" parent="."]
+position = Vector2(-31, -1)
+script = ExtResource("6_ew3fa")
+trail_node = ExtResource("7_dtfsp")
+trailRate = 0.005
+
+[node name="Timer2" type="Timer" parent="trailSpawner"]
+one_shot = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="PerfectDodgeEnter" to="." method="_on_perfect_dodge_area_area_entered"]
