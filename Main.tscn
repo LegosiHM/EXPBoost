@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgfs2x0xni1r0"]
+[gd_scene load_steps=9 format=3 uid="uid://cgfs2x0xni1r0"]
 
+[ext_resource type="Script" path="res://Main.gd" id="1_o1rcl"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://Script/Character/Player/car.tscn" id="2_i0qme"]
-[ext_resource type="Texture2D" uid="uid://cdrnm8j3b7xse" path="res://Assets/Sprite/Background.png" id="2_machg"]
+[ext_resource type="Texture2D" uid="uid://cu54mr81myps7" path="res://Assets/Sprite/Background.png" id="2_machg"]
 [ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Script/Character/Boss/Boss.tscn" id="3_3vejh"]
 [ext_resource type="PackedScene" uid="uid://d0utjb2p2oicx" path="res://Script/UI/heart_container.tscn" id="4_snbi0"]
 [ext_resource type="Script" path="res://Script/UI/ProgressBar.gd" id="4_y4qqs"]
@@ -14,34 +15,36 @@ bg_color = Color(0.745048, 0, 0.0752154, 1)
 
 [node name="Main" type="Node2D"]
 position = Vector2(2, 0)
+script = ExtResource("1_o1rcl")
 
 [node name="Car" parent="." instance=ExtResource("2_i0qme")]
-position = Vector2(253, 194)
+position = Vector2(235, 344)
 scale = Vector2(0.5, 0.5)
 braking = -750
 dashSpeed = 100
 
-[node name="Img7901" type="Sprite2D" parent="."]
-position = Vector2(638, 360)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(639, 364)
 scale = Vector2(2, 2)
 texture = ExtResource("2_machg")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Img7901"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+position = Vector2(0, 1)
 collision_mask = 6
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Img7901/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/StaticBody2D"]
 visibility_layer = 6
 polygon = PackedVector2Array(-40.5, -160, -39.5, -154, -79, -149, -115.5, -140.5, -154, -125.5, -188, -104.5, -205.5, -89, -219.5, -71, -231.5, -53, -244.5, -25.5, -247.5, 3.5, -259.5, 5, -240, -60.5, -176.5, -122, -77, -156)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Img7901/StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Background/StaticBody2D"]
 visibility_layer = 6
 polygon = PackedVector2Array(-248, 3.5, -239, 28, -232.5, 43.5, -219.5, 61.5, -200, 82, -181, 95, -147, 113.5, -120.5, 122, -93, 129, -62.5, 136.5, -29, 142, 2, 142.5, 2.5, 149, -129.5, 128.5, -213.5, 81.5, -259.5, 5)
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Img7901/StaticBody2D"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Background/StaticBody2D"]
 visibility_layer = 6
 polygon = PackedVector2Array(2, 142.5, 2.5, 149, 96, 137, 181, 103, 238, 50.5, 255.5, -5.5, 246.5, -5.5, 246, 6.5, 243, 19.5, 235.5, 37, 226.5, 52.5, 208.5, 74, 191, 89, 165.5, 103, 146.5, 113.5, 109.5, 126, 82.5, 132.5, 58.5, 138, 30.5, 141.5)
 
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Img7901/StaticBody2D"]
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Background/StaticBody2D"]
 visibility_layer = 6
 polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155.5, 71.5, -150, 108.5, -142.5, 138.5, -132.5, 161.5, -120.5, 184, -108, 206.5, -88.5, 223, -67.5, 235.5, -43.5, 245.5, -21.5, 247, -5, 255.5, -5.5, 245, -51, 211, -92.5, 168.5, -121, 161, -129, 81.5, -153.5)
 
@@ -67,5 +70,4 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -70.0
-offset_bottom = 0.0
 grow_vertical = 0

@@ -4,6 +4,7 @@ extends CharacterBody2D
 const maxHealth: int = 3
 @onready var currentHealth: int = maxHealth
 var can_take_damage: bool = true
+@export var iframe_time: float = 1.0
 
 #@export var max_speed := 300;
 #@export_range(0, 10, 0.1) var drag_factor := 0.1
@@ -101,6 +102,7 @@ func _start_perfect_dash():
 	isDashing = true
 	canDash = false
 	ghost_timer.start()
+	iframe()
 	await get_tree().create_timer(dashDuration).timeout
 	ghost_timer.stop()
 	isDashing = false
@@ -139,8 +141,15 @@ func calculate_steering(delta):
 
 
 func _on_hurtbox_area_entered(hitbox):
-	self.currentHealth -= 1
-	print(currentHealth)
+	if can_take_damage:
+		iframe()
+		self.currentHealth -= 1
+		print(currentHealth)
+
+func iframe():
+	can_take_damage = false
+	await get_tree().create_timer(iframe_time).timeout
+	can_take_damage = true
 
 
 func _on_timer_timeout():

@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://db87jdmqdu5j6"]
+
+[ext_resource type="Texture2D" uid="uid://d4djou028bxml" path="res://Assets/Sprite/Laser.png" id="2_0qkmm"]
+[ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="3_lj2fe"]
+[ext_resource type="PackedScene" uid="uid://cg3sti03jkode" path="res://Script/Character/Player/Abilities/perfect_dodge_area.tscn" id="4_4w1o5"]
+
+[sub_resource type="GDScript" id="GDScript_8dspu"]
+script/source = "extends Node2D
+
+
+# Laser length
+@export var laser_length = 400.0
+
+# Sprites
+@onready var head_sprite = $Head
+@onready var body_sprite = $Body
+
+func _ready():
+	update_laser()
+
+func update_laser():
+	# Set the position of the head sprite to the end of the laser
+	head_sprite.position = Vector2(laser_length, 0)
+
+	# Set the scale of the body sprite to match the laser length
+	body_sprite.scale = Vector2(laser_length / body_sprite.texture.get_size().x, 1)
+
+	# Adjust the body sprite's position to start at the origin
+	body_sprite.position = Vector2(0, -body_sprite.texture.get_size().y / 2)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8ct2"]
+size = Vector2(96, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exitx"]
+size = Vector2(157, 137)
+
+[node name="Laser" type="Node2D"]
+script = SubResource("GDScript_8dspu")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(144, 0)
+texture = ExtResource("2_0qkmm")
+offset = Vector2(-48, 0)
+
+[node name="Hitbox" parent="." instance=ExtResource("3_lj2fe")]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+light_mask = 2
+visibility_layer = 4
+position = Vector2(96, 5.5)
+shape = SubResource("RectangleShape2D_m8ct2")
+debug_color = Color(0.660221, 0.453583, 0.647927, 0.42)
+
+[node name="PerfectDodgeArea" parent="." groups=["Bullet"] instance=ExtResource("4_4w1o5")]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="PerfectDodgeArea" index="0"]
+position = Vector2(99.5, 1.5)
+shape = SubResource("RectangleShape2D_exitx")
+
+[editable path="Hitbox"]
+[editable path="PerfectDodgeArea"]
