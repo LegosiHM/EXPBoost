@@ -23,5 +23,6 @@ func _process(delta):
 			var trail = trail_node.instantiate()
 			trail.position = car.position
 			trail.rotation = car.rotation
+			trail.scale = car.scale
 			get_tree().root.add_child(trail)
 		frameCount = frameCount + 1
