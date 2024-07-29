@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 #Health
+signal healthChanged
 const maxHealth: int = 3
 @onready var currentHealth: int = maxHealth
 var can_take_damage: bool = true
@@ -144,7 +145,7 @@ func _on_hurtbox_area_entered(hitbox):
 	if can_take_damage:
 		iframe()
 		self.currentHealth -= 1
-		print(currentHealth)
+		healthChanged.emit(currentHealth)
 
 func iframe():
 	can_take_damage = false

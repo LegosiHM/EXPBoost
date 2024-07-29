@@ -37,6 +37,7 @@ texture_normal = ExtResource("2_3rw0i")
 texture_pressed = ExtResource("3_7h23s")
 
 [node name="TextureButton2" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
 offset_left = 679.0
 offset_top = 388.0
 offset_right = 4187.0
