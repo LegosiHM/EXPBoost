@@ -25,9 +25,10 @@ collision_layer = 4
 script = ExtResource("1_drm0c")
 ghost_node = ExtResource("2_5rpq3")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_om4g8")]
+[node name="Hurtbox" parent="." groups=["Player"] instance=ExtResource("3_om4g8")]
 collision_layer = 4
 collision_mask = 2
+monitorable = true
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 light_mask = 4

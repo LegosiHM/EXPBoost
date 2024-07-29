@@ -85,6 +85,7 @@ scale = Vector2(1.9, 1.9)
 [node name="Hitbox" parent="." instance=ExtResource("4_y573o")]
 collision_layer = 3
 collision_mask = 5
+monitoring = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_7xpxy")
@@ -97,6 +98,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_xwhr5")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 
 [editable path="Hitbox"]
 [editable path="PerfectDodgeArea"]

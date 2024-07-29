@@ -131,9 +131,11 @@ func calculate_steering(delta):
 
 
 func _on_hurtbox_area_entered(hitbox):
-	if !isDashing:
+	if !isDashing and can_take_damage:
 		self.currentHealth -= 1
-		healthChanged.emit(currentHealth)
+		iframe()
+		if self.currentHealth >= 0:
+			healthChanged.emit(currentHealth)
 	else:
 		Engine.time_scale = 0.1
 
@@ -141,6 +143,7 @@ func iframe():
 	can_take_damage = false
 	await get_tree().create_timer(iframe_time).timeout
 	can_take_damage = true
+	
 
 
 func _on_timer_timeout():
