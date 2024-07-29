@@ -92,7 +92,6 @@ func get_input():
 func _start_perfect_dash():
 	isDashing = true
 	canDash = false
-	Engine.time_scale = 0.1
 	can_take_damage = false
 	await get_tree().create_timer(dashDuration).timeout
 	Engine.time_scale = 1.0
@@ -132,10 +131,11 @@ func calculate_steering(delta):
 
 
 func _on_hurtbox_area_entered(hitbox):
-	if can_take_damage:
-		iframe()
+	if !isDashing:
 		self.currentHealth -= 1
 		healthChanged.emit(currentHealth)
+	else:
+		Engine.time_scale = 0.1
 
 func iframe():
 	can_take_damage = false
