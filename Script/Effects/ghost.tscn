@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c11sypy54k87c"]
 
-[ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/CarSprite.png" id="1_v0snr"]
+[ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/Player/CarSprite.png" id="1_v0snr"]
 [ext_resource type="Script" path="res://Script/Effects/Ghost.gd" id="2_gbw6y"]
 
 [node name="Ghost" type="Sprite2D"]

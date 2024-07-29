@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Script/Character/Boss/Boss.gd" id="1_gnb6x"]
 [ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Script/Projectiles/Bullet.tscn" id="2_ydprj"]
 [ext_resource type="PackedScene" uid="uid://5bestnx8ws23" path="res://Script/Projectiles/NewLaser.tscn" id="3_yj5v3"]
-[ext_resource type="Texture2D" uid="uid://bgmcu07pv4mjj" path="res://Assets/Sprite/Boss.png" id="4_msp1m"]
+[ext_resource type="Texture2D" uid="uid://bgmcu07pv4mjj" path="res://Assets/Sprite/Boss/Boss.png" id="4_msp1m"]
 [ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/StateMachine.gd" id="5_mtd8l"]
 [ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/idle.gd" id="6_ny2l7"]
 [ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/pattern1.gd" id="7_nhxwo"]

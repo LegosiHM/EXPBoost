@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu54mr81myps7"
-path="res://.godot/imported/Background.png-15970fc8065a176359d08b797126a1a8.ctex"
+uid="uid://dpxj826s8cpsv"
+path="res://.godot/imported/DashIcon_Ready.png-032be00d0a77ea8fbcc36f8e399caa32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite/Background.png"
-dest_files=["res://.godot/imported/Background.png-15970fc8065a176359d08b797126a1a8.ctex"]
+source_file="res://Assets/Sprite/UI/DashIcon_Ready.png"
+dest_files=["res://.godot/imported/DashIcon_Ready.png-032be00d0a77ea8fbcc36f8e399caa32.ctex"]
 
 [params]
 

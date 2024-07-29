@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Main.gd" id="1_o1rcl"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://Script/Character/Player/car.tscn" id="2_i0qme"]
-[ext_resource type="Texture2D" uid="uid://cu54mr81myps7" path="res://Assets/Sprite/Background.png" id="2_machg"]
+[ext_resource type="Texture2D" uid="uid://cu54mr81myps7" path="res://Assets/Sprite/Boss/Background.png" id="2_machg"]
 [ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Script/Character/Boss/Boss.tscn" id="3_3vejh"]
 [ext_resource type="PackedScene" uid="uid://d0utjb2p2oicx" path="res://Script/UI/heart_container.tscn" id="4_snbi0"]
 [ext_resource type="Script" path="res://Script/UI/ProgressBar.gd" id="4_y4qqs"]

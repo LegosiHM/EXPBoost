@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bacjblwyapnir"
-path="res://.godot/imported/Heart.png-6c5caefec2832b444d676797340269f1.ctex"
+uid="uid://dmejq50n63smr"
+path="res://.godot/imported/ExitSign_Clicked.png-5bcfc6df688a3ab245bd7aa3a77c2963.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite/Heart.png"
-dest_files=["res://.godot/imported/Heart.png-6c5caefec2832b444d676797340269f1.ctex"]
+source_file="res://Assets/Sprite/UI/ExitSign_Clicked.png"
+dest_files=["res://.godot/imported/ExitSign_Clicked.png-5bcfc6df688a3ab245bd7aa3a77c2963.ctex"]
 
 [params]
 

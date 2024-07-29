@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgmcu07pv4mjj"
-path="res://.godot/imported/Boss.png-7b96e76f7c9a06b0f7f24c5373dffb05.ctex"
+uid="uid://cnssk7o24j5a2"
+path="res://.godot/imported/DashIcon_NotReady.png-67a4df7594db3488a75cd670fa8e2ad4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite/Boss.png"
-dest_files=["res://.godot/imported/Boss.png-7b96e76f7c9a06b0f7f24c5373dffb05.ctex"]
+source_file="res://Assets/Sprite/UI/DashIcon_NotReady.png"
+dest_files=["res://.godot/imported/DashIcon_NotReady.png-67a4df7594db3488a75cd670fa8e2ad4.ctex"]
 
 [params]
 

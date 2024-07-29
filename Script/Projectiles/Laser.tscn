@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://db87jdmqdu5j6"]
 
-[ext_resource type="Texture2D" uid="uid://d4djou028bxml" path="res://Assets/Sprite/Laser.png" id="2_0qkmm"]
+[ext_resource type="Texture2D" uid="uid://d4djou028bxml" path="res://Assets/Sprite/Boss/Laser.png" id="2_0qkmm"]
 [ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="3_lj2fe"]
 [ext_resource type="PackedScene" uid="uid://cg3sti03jkode" path="res://Script/Character/Player/Abilities/perfect_dodge_area.tscn" id="4_4w1o5"]
 

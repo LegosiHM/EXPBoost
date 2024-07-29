@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c17q6gu68qtq4"
-path="res://.godot/imported/Bullet.png-ab52a81e543b307bab2cbee430ef4fc0.ctex"
+uid="uid://bacjblwyapnir"
+path="res://.godot/imported/Heart.png-97ad8604a67fe8936ea322849fd76e6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite/Bullet.png"
-dest_files=["res://.godot/imported/Bullet.png-ab52a81e543b307bab2cbee430ef4fc0.ctex"]
+source_file="res://Assets/Sprite/UI/Heart.png"
+dest_files=["res://.godot/imported/Heart.png-97ad8604a67fe8936ea322849fd76e6c.ctex"]
 
 [params]
 

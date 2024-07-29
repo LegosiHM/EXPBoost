@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bw8jlp1t7ea74"]
 
 [ext_resource type="Script" path="res://Script/Projectiles/Bullet.gd" id="1_jt8uj"]
-[ext_resource type="Texture2D" uid="uid://c17q6gu68qtq4" path="res://Assets/Sprite/Bullet.png" id="2_3288s"]
+[ext_resource type="Texture2D" uid="uid://c17q6gu68qtq4" path="res://Assets/Sprite/Boss/Bullet.png" id="2_3288s"]
 [ext_resource type="Script" path="res://Script/Projectiles/Sprite2D.gd" id="3_0orh2"]
 [ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="4_y573o"]
 [ext_resource type="PackedScene" uid="uid://cg3sti03jkode" path="res://Script/Character/Player/Abilities/perfect_dodge_area.tscn" id="5_u0o0s"]

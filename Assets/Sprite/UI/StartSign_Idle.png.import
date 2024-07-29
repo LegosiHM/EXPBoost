@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y1udlfdnxm1b"
-path="res://.godot/imported/CarSprite.png-3df0be77fe8372ef9d5ded76e94895c6.ctex"
+uid="uid://cstx7ya87ff3p"
+path="res://.godot/imported/StartSign_Idle.png-e41076e5918769f86604ba6940a0e0fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite/CarSprite.png"
-dest_files=["res://.godot/imported/CarSprite.png-3df0be77fe8372ef9d5ded76e94895c6.ctex"]
+source_file="res://Assets/Sprite/UI/StartSign_Idle.png"
+dest_files=["res://.godot/imported/StartSign_Idle.png-e41076e5918769f86604ba6940a0e0fc.ctex"]
 
 [params]
 

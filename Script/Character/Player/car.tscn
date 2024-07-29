@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/Character/Player/Abilities/carMove.gd" id="1_drm0c"]
 [ext_resource type="PackedScene" uid="uid://c11sypy54k87c" path="res://Script/Effects/ghost.tscn" id="2_5rpq3"]
-[ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/CarSprite.png" id="2_06do7"]
+[ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/Player/CarSprite.png" id="2_06do7"]
 [ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="3_om4g8"]
 [ext_resource type="PackedScene" uid="uid://baiphjuptsmq6" path="res://Script/Effects/slowmo_controller.tscn" id="5_fymwc"]
 
