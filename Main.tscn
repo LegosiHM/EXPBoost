@@ -20,6 +20,7 @@ script = ExtResource("1_o1rcl")
 [node name="Car" parent="." instance=ExtResource("2_i0qme")]
 position = Vector2(235, 344)
 scale = Vector2(0.5, 0.5)
+iframe_time = 2.0
 braking = -750
 dashSpeed = 100
 
