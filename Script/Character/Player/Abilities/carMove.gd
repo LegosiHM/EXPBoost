@@ -84,31 +84,21 @@ func get_input():
 	if Input.is_action_pressed("brake"):
 		acceleration = transform.x * braking
 	
-	if Input.is_action_just_pressed("Dash") and canDash and $Timer.is_stopped() == false:
+	if Input.is_action_just_pressed("Dash") and canDash:
 		_start_perfect_dash()
-	elif Input.is_action_just_pressed("Dash") and canDash:
-		StartDash()
 	if isDashing:
 		velocity += transform.x * dashSpeed
-
-func StartDash():
-	isDashing = true
-	canDash = false
-	await get_tree().create_timer(dashDuration).timeout
-	isDashing = false
-	await get_tree().create_timer(dashCooldown).timeout
-	canDash = true
 
 func _start_perfect_dash():
 	isDashing = true
 	canDash = false
-	ghost_timer.start()
-	iframe()
+	Engine.time_scale = 0.1
+	can_take_damage = false
 	await get_tree().create_timer(dashDuration).timeout
-	ghost_timer.stop()
+	Engine.time_scale = 1.0
+	can_take_damage = true
 	isDashing = false
-	# Additional feedback for perfect dash
-	_perfect_dash_feedback()
+	await get_tree().create_timer(dashCooldown).timeout
 	canDash = true
 		
 func _perfect_dash_feedback():
