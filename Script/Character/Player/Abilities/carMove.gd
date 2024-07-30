@@ -6,6 +6,8 @@ const maxHealth: int = 3
 @onready var currentHealth: int = maxHealth
 var can_take_damage: bool = true
 @export var iframe_time: float = 1.0
+@onready var hit_flash_anim_player = $AnimationPlayer
+@onready var screenoverlay = $"../Camera2D/AnimationPlayer"
 
 #@export var max_speed := 300;
 #@export_range(0, 10, 0.1) var drag_factor := 0.1
@@ -133,11 +135,15 @@ func calculate_steering(delta):
 func _on_hurtbox_area_entered(hitbox):
 	if !isDashing and can_take_damage:
 		self.currentHealth -= 1
+		screenoverlay.play("damaged")
+		hit_flash_anim_player.play("hit_flash")
 		iframe()
 		if self.currentHealth >= 0:
 			healthChanged.emit(currentHealth)
 	if can_take_damage:
 		self.currentHealth -= 1
+		screenoverlay.play("damaged")
+		hit_flash_anim_player.play("hit_flash")
 		healthChanged.emit(currentHealth)
 		can_take_damage = false
 	else:

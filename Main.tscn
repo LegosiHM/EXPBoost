@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgfs2x0xni1r0"]
+[gd_scene load_steps=10 format=3 uid="uid://cgfs2x0xni1r0"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_o1rcl"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://Script/Character/Player/car.tscn" id="2_i0qme"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Script/Character/Boss/Boss.tscn" id="3_3vejh"]
 [ext_resource type="PackedScene" uid="uid://d0utjb2p2oicx" path="res://Script/UI/heart_container.tscn" id="4_snbi0"]
 [ext_resource type="Script" path="res://Script/UI/ProgressBar.gd" id="4_y4qqs"]
+[ext_resource type="PackedScene" uid="uid://dmb2utpcwil1r" path="res://Script/Effects/camera_2d.tscn" id="7_07raf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ctr0"]
 bg_color = Color(0.6, 0.6, 0.6, 0.678431)
@@ -100,3 +101,8 @@ visibility_layer = 6
 position = Vector2(639, 368)
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155.5, 71.5, -150, 108.5, -142.5, 138.5, -132.5, 161.5, -120.5, 184, -108, 206.5, -88.5, 223, -67.5, 235.5, -43.5, 245.5, -21.5, 247, -5, 255.5, -5.5, 245, -51, 211, -92.5, 168.5, -121, 161, -129, 81.5, -153.5)
+
+[node name="Camera2D" parent="." instance=ExtResource("7_07raf")]
+position = Vector2(640, 360)
+
+[editable path="Camera2D"]

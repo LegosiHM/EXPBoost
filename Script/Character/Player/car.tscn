@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cchsa1gv6nht0"]
+[gd_scene load_steps=16 format=3 uid="uid://cchsa1gv6nht0"]
 
 [ext_resource type="Script" path="res://Script/Character/Player/Abilities/carMove.gd" id="1_drm0c"]
 [ext_resource type="PackedScene" uid="uid://c11sypy54k87c" path="res://Script/Effects/ghost.tscn" id="2_5rpq3"]
 [ext_resource type="Texture2D" uid="uid://y1udlfdnxm1b" path="res://Assets/Sprite/Player/CarSprite.png" id="2_06do7"]
 [ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="3_om4g8"]
+[ext_resource type="Shader" uid="uid://ca5q7rnt0y1qp" path="res://Script/Character/Player/Effect/hit_flash.tres" id="4_ivrns"]
 [ext_resource type="PackedScene" uid="uid://baiphjuptsmq6" path="res://Script/Effects/slowmo_controller.tscn" id="5_fymwc"]
 [ext_resource type="Script" path="res://Script/Character/Player/trailSpawner.gd" id="6_ew3fa"]
 [ext_resource type="PackedScene" uid="uid://blc4kwmw6lu08" path="res://Script/Character/Player/Abilities/footTrails.tscn" id="7_dtfsp"]
@@ -12,6 +13,12 @@
 radius = 32.0
 height = 110.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gl4vp"]
+resource_local_to_scene = true
+shader = ExtResource("4_ivrns")
+shader_parameter/Enabled = false
+shader_parameter/Tint = Color(1, 1, 1, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0ypp"]
 radius = 33.0
 height = 144.0
@@ -19,6 +26,43 @@ height = 144.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxwl8"]
 radius = 33.0
 height = 116.0
+
+[sub_resource type="Animation" id="Animation_wo4v8"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_tdcin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5h0cs"]
+_data = {
+"RESET": SubResource("Animation_tdcin"),
+"hit_flash": SubResource("Animation_wo4v8")
+}
 
 [node name="Car" type="CharacterBody2D"]
 collision_layer = 4
@@ -39,6 +83,7 @@ shape = SubResource("CapsuleShape2D_3x0o5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_gl4vp")
 rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_06do7")
@@ -78,6 +123,11 @@ trailRate = 0.005
 
 [node name="Timer2" type="Timer" parent="trailSpawner"]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5h0cs")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="PerfectDodgeEnter" to="." method="_on_perfect_dodge_area_area_entered"]
