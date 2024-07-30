@@ -133,19 +133,13 @@ func calculate_steering(delta):
 
 
 func _on_hurtbox_area_entered(hitbox):
-	if !isDashing and can_take_damage:
+	if can_take_damage:
 		self.currentHealth -= 1
 		screenoverlay.play("damaged")
 		hit_flash_anim_player.play("hit_flash")
 		iframe()
 		if self.currentHealth >= 0:
 			healthChanged.emit(currentHealth)
-	if can_take_damage:
-		self.currentHealth -= 1
-		screenoverlay.play("damaged")
-		hit_flash_anim_player.play("hit_flash")
-		healthChanged.emit(currentHealth)
-		can_take_damage = false
 	else:
 		if isDashing:
 			Engine.time_scale = 0.1
