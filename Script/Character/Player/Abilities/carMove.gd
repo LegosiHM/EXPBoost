@@ -176,5 +176,5 @@ func _on_ghost_timer_timeout():
 func _on_shoot_timer_timeout():
 	var bullet = bullet_node.instantiate()
 	bullet.position = global_position
-	var direction = (boss_position - global_position).normalized()
+	bullet.direction = (boss_position - global_position).normalized()
 	get_tree().current_scene.call_deferred("add_child", bullet)
