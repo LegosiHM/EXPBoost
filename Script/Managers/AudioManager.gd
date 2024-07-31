@@ -2,6 +2,7 @@ extends Node
 
 @onready var test_sound = $TestSound
 @onready var test_sound_2 = $TestSound2
+@onready var car_moving = $CarMoving
 
 const DOOM_CUT = preload("res://Assets/Audio/Doom Cut.mp3")
 #const FLUFFING_A_DUCK = preload("res://Assets/Audio/Fluffing a Duck.mp3")
