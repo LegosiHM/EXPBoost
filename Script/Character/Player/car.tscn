@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://baiphjuptsmq6" path="res://Script/Effects/slowmo_controller.tscn" id="5_fymwc"]
 [ext_resource type="Script" path="res://Script/Character/Player/trailSpawner.gd" id="6_ew3fa"]
 [ext_resource type="PackedScene" uid="uid://blc4kwmw6lu08" path="res://Script/Character/Player/Abilities/footTrails.tscn" id="7_dtfsp"]
-[ext_resource type="PackedScene" uid="uid://c4crlfil3o61n" path="res://Script/Character/Player/Effect/Bullet.tscn" id="9_yp6f3"]
+[ext_resource type="PackedScene" uid="uid://c4crlfil3o61n" path="res://Script/Character/Player/Effect/PlayerBullet.tscn" id="9_yp6f3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3x0o5"]
 radius = 32.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4crlfil3o61n"]
 
-[ext_resource type="Script" path="res://Script/Character/Player/Effect/Bullet.gd" id="1_86k4c"]
-[ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="2_cfvx4"]
+[ext_resource type="Script" path="res://Script/Character/Player/Effect/PlayerBullet.gd" id="1_uo1p2"]
+[ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="2_l3x6w"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i1dec"]
 
@@ -10,14 +10,14 @@ size = Vector2(34, 11)
 
 [node name="Bullet" type="Area2D" groups=["PlayerBullet"]]
 collision_layer = 16
-script = ExtResource("1_86k4c")
+script = ExtResource("1_uo1p2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16.25, 4.25)
 scale = Vector2(33.5, 9.5)
 texture = SubResource("CanvasTexture_i1dec")
 
-[node name="Hitbox" parent="." groups=["PlayerBullet"] instance=ExtResource("2_cfvx4")]
+[node name="Hitbox" parent="." groups=["PlayerBullet"] instance=ExtResource("2_l3x6w")]
 collision_layer = 16
 monitoring = true
 

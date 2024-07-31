@@ -46,7 +46,7 @@ position = Vector2(0, 1)
 polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155.5, 71.5, -150, 108.5, -142.5, 138.5, -132.5, 161.5, -120.5, 184, -108, 206.5, -88.5, 223, -67.5, 235.5, -43.5, 245.5, -21.5, 247, -5, 255.5, -5.5, 245, -51, 211, -92.5, 168.5, -121, 161, -129, 81.5, -153.5)
 
 [node name="Boss" parent="." instance=ExtResource("3_3vejh")]
-position = Vector2(620, 340)
+position = Vector2(620, 341)
 alpha = 7.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
