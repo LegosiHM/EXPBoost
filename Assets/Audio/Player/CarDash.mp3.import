@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/CarDash.mp3-f9c28d6deb2e75edba4e18f7226081e4.
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

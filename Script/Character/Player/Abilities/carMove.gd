@@ -47,7 +47,15 @@ var perfect_dash_timer: float = 0.7
 
 # Perfect dodge area
 @onready var perfect_dodge_area = $PerfectDodgeEnter
+<<<<<<< HEAD
 	
+=======
+
+func _ready():
+	AudioManager.car_moving.play()
+
+#func _physics_process(delta: float) -> void:
+>>>>>>> 46185a9ce9cc392c52eaf75bd1570d811f0d39a2
 func _physics_process(delta):
 	
 	#var direction = Input.get_vector('move_left', 'move_right', 'move_up', 'move_down')
@@ -80,6 +88,10 @@ func get_input():
 	steer_direction = turn * deg_to_rad(steering_angle)
 	if Input.is_action_pressed("accelerate"):
 		acceleration = transform.x * engine_power
+		AudioManager.car_moving.volume_db = 0
+	else:
+		AudioManager.car_moving.volume_db = -200
+		
 	if Input.is_action_pressed("brake"):
 		acceleration = transform.x * braking
 	
