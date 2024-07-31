@@ -8,12 +8,10 @@ var can_take_damage: bool = true
 @export var iframe_time: float = 1.0
 @onready var hit_flash_anim_player = $AnimationPlayer
 @onready var screenoverlay = $"../Camera2D/AnimationPlayer"
+var shoot_timer = 0.4
+var boss_position = Vector2(620, 340)
+@export var bullet_node: PackedScene
 
-#@export var max_speed := 300;
-#@export_range(0, 10, 0.1) var drag_factor := 0.1
-#
-#var desired_velocity := Vector2.ZERO
-#var steering_velocity := Vector2.ZERO
 
 # Movement variables
 @export var wheel_base: int = 70
@@ -50,7 +48,6 @@ var perfect_dash_timer: float = 0.7
 # Perfect dodge area
 @onready var perfect_dodge_area = $PerfectDodgeEnter
 	
-#func _physics_process(delta: float) -> void:
 func _physics_process(delta):
 	
 	#var direction = Input.get_vector('move_left', 'move_right', 'move_up', 'move_down')
@@ -167,3 +164,9 @@ func add_ghost():
 
 func _on_ghost_timer_timeout():
 	add_ghost()
+
+func _on_shoot_timer_timeout():
+	var bullet = bullet_node.instantiate()
+	bullet.position = global_position
+	var direction = (boss_position - global_position).normalized()
+	get_tree().current_scene.call_deferred("add_child", bullet)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl0fd7goxlfpm"]
+
+[ext_resource type="Script" path="res://HealthComponent.gd" id="1_igb8u"]
+[ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="2_8fj57"]
+
+[node name="HealthComponent" type="Node"]
+script = ExtResource("1_igb8u")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_8fj57")]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

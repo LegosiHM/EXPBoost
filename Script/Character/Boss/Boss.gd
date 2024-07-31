@@ -8,6 +8,17 @@ var theta: float = 0.0
 @export var rotation_speed = 1.0
 var lasers = []
 
+@onready var healthbar = $Healthbar 
+
+@export var maxHealth:int = 100
+var currentHealth: int = maxHealth : set = set_health
+
+func set_health(value:int):
+	currentHealth = value
+
+func _ready():
+	healthbar.init_health(currentHealth)
+
 func get_vector(angle):
 	theta = angle + alpha
 	return Vector2(cos(theta), sin(theta))
@@ -28,19 +39,10 @@ func despawn_laser():
 	for i in range(lasers.size()-1, -1, -1):
 		lasers[i].queue_free()
 		lasers.remove_at(i)
-		
 
-#func _on_speed_timeout():
-	#shoot(theta)
-	
-#func _process(delta):
-	## Rotate the lasers around the boss
-	#for laser in lasers:
-		#laser.rotation += rotation_speed * delta
-#
-#
-#func _ready():
-	#spawn_laser(Vector2(100, 0))
-	#spawn_laser(Vector2(-100, 0))
-	#spawn_laser(Vector2(0, 100))
-	#spawn_laser(Vector2(0, -100))
+
+func _on_hurtbox_area_entered(hitbox):
+	if hitbox.is_in_group("PlayerBullet"):
+		currentHealth -= 1
+		healthbar.health = currentHealth
+		print(currentHealth)
