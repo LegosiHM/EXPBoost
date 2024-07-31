@@ -18,6 +18,7 @@ config/icon="res://Assets/Sprite/icon.svg"
 [autoload]
 
 AudioManager="*res://Script/Managers/audio_manager.tscn"
+DamageNumbers="*res://Script/Effects/damage_numbers.gd"
 
 [display]
 

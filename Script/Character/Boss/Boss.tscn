@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c5ruslw2o6uk8"]
+[gd_scene load_steps=27 format=3 uid="uid://c5ruslw2o6uk8"]
 
 [ext_resource type="Script" path="res://Script/Character/Boss/Boss.gd" id="1_gnb6x"]
 [ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Script/Projectiles/Bullet.tscn" id="2_ydprj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhuu3gbr56g4o" path="res://Assets/Sprite/AlertPhotoLasor.png" id="9_5tp5k"]
 [ext_resource type="PackedScene" uid="uid://bpmv58n15njej" path="res://Script/Character/Boss/healthbar.tscn" id="12_k3amj"]
 [ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="12_x2n7e"]
+[ext_resource type="PackedScene" uid="uid://cgv18ufbjb4es" path="res://Script/Effects/DamageNumber.tscn" id="13_k5kk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2deva"]
 atlas = ExtResource("8_wcde4")
@@ -173,6 +174,9 @@ monitorable = true
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_2g7r7")
+
+[node name="DamageNumber" parent="." instance=ExtResource("13_k5kk6")]
+position = Vector2(0, -82)
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

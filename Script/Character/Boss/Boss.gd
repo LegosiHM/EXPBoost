@@ -44,5 +44,6 @@ func despawn_laser():
 func _on_hurtbox_area_entered(hitbox):
 	if hitbox.is_in_group("PlayerBullet"):
 		currentHealth -= 1
+		DamageNumbers.display_number(100, $DamageNumber.global_position)
 		healthbar.health = currentHealth
 		print(currentHealth)
