@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgfs2x0xni1r0"]
+[gd_scene load_steps=8 format=3 uid="uid://cgfs2x0xni1r0"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_o1rcl"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://Script/Character/Player/car.tscn" id="2_i0qme"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Script/Character/Boss/Boss.tscn" id="3_3vejh"]
 [ext_resource type="PackedScene" uid="uid://d0utjb2p2oicx" path="res://Script/UI/heart_container.tscn" id="4_snbi0"]
 [ext_resource type="PackedScene" uid="uid://dmb2utpcwil1r" path="res://Script/Effects/camera_2d.tscn" id="7_07raf"]
+[ext_resource type="Script" path="res://currentScoreLabel.gd" id="7_nsi7s"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(2, 0)
@@ -16,7 +17,7 @@ position = Vector2(235, 344)
 scale = Vector2(0.5, 0.5)
 iframe_time = 2.0
 braking = -750
-dashSpeed = 100
+dashSpeed = 300
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(639, 364)
@@ -86,5 +87,18 @@ polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155
 
 [node name="Camera2D" parent="." instance=ExtResource("7_07raf")]
 position = Vector2(640, 360)
+
+[node name="ScoreLabel" type="StaticBody2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(2, 2)
+
+[node name="currentScoreLabel" type="RichTextLabel" parent="ScoreLabel"]
+offset_left = 12.0
+offset_top = 9.5
+offset_right = 113.0
+offset_bottom = 49.5
+text = "Score"
+tab_size = 9
+script = ExtResource("7_nsi7s")
 
 [editable path="Camera2D"]

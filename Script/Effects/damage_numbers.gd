@@ -1,5 +1,8 @@
 extends Node
 
+var high_score = 0
+var current_score: int
+var previous_score: int
 
 func display_number(value: int, position: Vector2, is_critical: bool = false):
 	var number = Label.new()

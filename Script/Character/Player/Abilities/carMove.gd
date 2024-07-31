@@ -148,6 +148,8 @@ func _on_hurtbox_area_entered(hitbox):
 	else:
 		if isDashing:
 			Engine.time_scale = 0.1
+			DamageNumbers.display_number(300, Vector2(620,258), true)
+			DamageNumbers.current_score += 300
 		#playFlashingAnim
 		print("iframe")
 		iframe()
