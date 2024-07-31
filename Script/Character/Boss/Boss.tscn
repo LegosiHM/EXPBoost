@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c5ruslw2o6uk8"]
+[gd_scene load_steps=31 format=3 uid="uid://c5ruslw2o6uk8"]
 
 [ext_resource type="Script" path="res://Script/Character/Boss/Boss.gd" id="1_gnb6x"]
 [ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Script/Projectiles/Bullet.tscn" id="2_ydprj"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bpmv58n15njej" path="res://Script/Character/Boss/healthbar.tscn" id="12_k3amj"]
 [ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="12_x2n7e"]
 [ext_resource type="PackedScene" uid="uid://cgv18ufbjb4es" path="res://Script/Effects/DamageNumber.tscn" id="13_k5kk6"]
+[ext_resource type="Texture2D" uid="uid://f7atpvxmfvtb" path="res://Assets/Sprite/Boss/BossDeathAnimation.png" id="14_g4sfi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2deva"]
 atlas = ExtResource("8_wcde4")
@@ -103,6 +104,66 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g7r7"]
 radius = 80.0062
 
+[sub_resource type="Animation" id="Animation_gk5rv"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3grmo")]
+}
+
+[sub_resource type="Animation" id="Animation_gngi5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3grmo")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5fy0"]
+_data = {
+"Death": SubResource("Animation_gk5rv"),
+"RESET": SubResource("Animation_gngi5")
+}
+
 [node name="Boss" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_gnb6x")
@@ -115,6 +176,7 @@ wait_time = 0.07
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_3grmo")
@@ -177,6 +239,18 @@ shape = SubResource("CircleShape2D_2g7r7")
 
 [node name="DamageNumber" parent="." instance=ExtResource("13_k5kk6")]
 position = Vector2(0, -82)
+
+[node name="BossDeath" type="Sprite2D" parent="."]
+position = Vector2(2, -0.999993)
+scale = Vector2(0.449219, 0.449219)
+texture = ExtResource("14_g4sfi")
+hframes = 7
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BossDeath"]
+libraries = {
+"": SubResource("AnimationLibrary_p5fy0")
+}
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

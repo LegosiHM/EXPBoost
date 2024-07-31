@@ -1,15 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://5bestnx8ws23"]
+[gd_scene load_steps=11 format=3 uid="uid://5bestnx8ws23"]
 
 [ext_resource type="Script" path="res://Script/Projectiles/NewLaser.gd" id="1_rvtjp"]
 [ext_resource type="Texture2D" uid="uid://d4djou028bxml" path="res://Assets/Sprite/Boss/Laser.png" id="2_rw6h2"]
 [ext_resource type="PackedScene" uid="uid://c4dva2ewx6mat" path="res://Script/Projectiles/hitbox.tscn" id="3_jkax2"]
 [ext_resource type="PackedScene" uid="uid://cg3sti03jkode" path="res://Script/Character/Player/Abilities/perfect_dodge_area.tscn" id="4_btiqe"]
+[ext_resource type="Texture2D" uid="uid://oyf3p17kf8cn" path="res://Assets/Sprite/Boss/Laser_New.png" id="5_gljc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00efh"]
 size = Vector2(770, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3is2s"]
 size = Vector2(831, 117)
+
+[sub_resource type="Animation" id="Animation_x8a8y"]
+resource_name = "Laser"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3, 3]
+}
+
+[sub_resource type="Animation" id="Animation_77e5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vl0o6"]
+_data = {
+"Laser": SubResource("Animation_x8a8y"),
+"RESET": SubResource("Animation_77e5y")
+}
 
 [node name="NewLaser" type="Node2D"]
 script = ExtResource("1_rvtjp")
@@ -35,6 +73,18 @@ collision_mask = 4
 [node name="CollisionShape2D" parent="PerfectDodgeArea" index="0"]
 position = Vector2(3.5, 8.5)
 shape = SubResource("RectangleShape2D_3is2s")
+
+[node name="NewLaser" type="Sprite2D" parent="."]
+position = Vector2(7.07904, 8.96679)
+rotation = 1.5708
+scale = Vector2(1.08765, 3.03892)
+texture = ExtResource("5_gljc1")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NewLaser"]
+libraries = {
+"": SubResource("AnimationLibrary_vl0o6")
+}
 
 [editable path="Hitbox"]
 [editable path="PerfectDodgeArea"]
