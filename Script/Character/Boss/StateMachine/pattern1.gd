@@ -1,6 +1,6 @@
 extends State
 class_name pattern1
-
+@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var boss = $"../.."
 @onready var timer = $"../Timer"
 @onready var timer_2 = $"../Timer2"
@@ -14,15 +14,19 @@ func Enter():
 	timer.wait_time = anticipateTime
 	timer_2.wait_time = phaseTime
 	timer.start()
+	animated_sprite_2d.play("bullet")
 
 func Update(delta: float):
 	#anticipate Anim
+	
 	if(timer.time_left <= 0):
+		animated_sprite_2d.visible = false
 		boss.shoot(boss.theta)
 		if (!once):
 			timer_2.start()
 			once = true;
 		if(timer_2.time_left == 0):
 			Transitioned.emit(self, "idle")
-	#else:
+	else:
+		animated_sprite_2d.visible = true
 		#print("anticipating...")
