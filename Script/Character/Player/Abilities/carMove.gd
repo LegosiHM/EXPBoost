@@ -43,7 +43,8 @@ var perfect_dash_timer: float = 0.7
 @onready var ghost_timer = $GhostTimer
 @onready var slowmoController = $SlowmoController
 @export var slowdown_time = 1
-
+var oneFrame : bool = false
+var oneFrame2 : bool = false
 
 # Perfect dodge area
 @onready var perfect_dodge_area = $PerfectDodgeEnter
@@ -84,7 +85,7 @@ func get_input():
 	steer_direction = turn * deg_to_rad(steering_angle)
 	if Input.is_action_pressed("accelerate"):
 		acceleration = transform.x * engine_power
-		AudioManager.car_moving.volume_db = 0
+		AudioManager.car_moving.volume_db = -25
 	else:
 		AudioManager.car_moving.volume_db = -200
 		
@@ -94,7 +95,13 @@ func get_input():
 	if Input.is_action_just_pressed("Dash") and canDash:
 		_start_perfect_dash()
 	if isDashing:
+		if !oneFrame:
+			AudioManager.car_dash.play()
+			oneFrame = true
 		velocity += transform.x * dashSpeed
+	else:
+		oneFrame = false
+		oneFrame2 = false
 
 func _start_perfect_dash():
 	isDashing = true
@@ -150,6 +157,8 @@ func _on_hurtbox_area_entered(hitbox):
 			Engine.time_scale = 0.1
 			DamageNumbers.display_number(300, Vector2(620,258), true)
 			DamageNumbers.current_score += 300
+			if !oneFrame2:
+				AudioManager.car_perfect_dash.play()
 		#playFlashingAnim
 		print("iframe")
 		iframe()

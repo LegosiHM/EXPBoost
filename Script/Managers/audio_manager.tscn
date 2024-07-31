@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://d06fdlffrngx2"]
+[gd_scene load_steps=16 format=3 uid="uid://d06fdlffrngx2"]
 
 [ext_resource type="Script" path="res://Script/Managers/AudioManager.gd" id="1_mol4t"]
 [ext_resource type="AudioStream" uid="uid://bggdgl07jcvue" path="res://Assets/Audio/shot_single.wav" id="3_lolc2"]
 [ext_resource type="AudioStream" uid="uid://dkutfdwoa57b4" path="res://Assets/Audio/Player/CarMoving.mp3" id="3_uqogl"]
+[ext_resource type="AudioStream" uid="uid://7p3phpexa1c7" path="res://Assets/Audio/Player/CarDash.mp3" id="4_vwnob"]
+[ext_resource type="AudioStream" uid="uid://b1lel87hgsp4g" path="res://Assets/Audio/Player/CarPerfectDash.mp3" id="5_62kqu"]
+[ext_resource type="AudioStream" uid="uid://crefuwyv7km0b" path="res://Assets/Audio/Player/CarGetHit01.mp3" id="6_o2dhh"]
+[ext_resource type="AudioStream" uid="uid://cljtsngh3jq6h" path="res://Assets/Audio/Player/CarGetHit02.mp3" id="7_60er0"]
+[ext_resource type="AudioStream" uid="uid://v0ytj18s0skb" path="res://Assets/Audio/Boss/BossBullet.mp3" id="8_gl2gp"]
+[ext_resource type="AudioStream" uid="uid://csegqjjfm3gmq" path="res://Assets/Audio/Boss/BossChangingPhase.mp3" id="9_xqb3e"]
+[ext_resource type="AudioStream" uid="uid://drnlv7xgbjjeh" path="res://Assets/Audio/Boss/BossLaserHold.mp3" id="10_8qrkg"]
+[ext_resource type="AudioStream" uid="uid://cmq5bjwtenbib" path="res://Assets/Audio/Boss/BossLaserOneHit.mp3" id="11_x3p25"]
+[ext_resource type="AudioStream" uid="uid://f2gjeg61geih" path="res://Assets/Audio/UI/DashOnCooldown.mp3" id="12_1r458"]
+[ext_resource type="AudioStream" uid="uid://oh60hcjjjfgo" path="res://Assets/Audio/UI/DashReset.mp3" id="13_ml8ro"]
+[ext_resource type="AudioStream" uid="uid://ociei3lrmwxn" path="res://Assets/Audio/UI/PointIncrease.mp3" id="14_pogqe"]
+[ext_resource type="AudioStream" uid="uid://8g6klixh5rmv" path="res://Assets/Audio/UI/PointPerfectDash.mp3" id="15_wdv7k"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_mol4t")
@@ -16,3 +28,39 @@ stream = ExtResource("3_lolc2")
 
 [node name="CarMoving" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_uqogl")
+
+[node name="CarDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vwnob")
+
+[node name="CarPerfectDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_62kqu")
+
+[node name="CarGetHit01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_o2dhh")
+
+[node name="CarGetHit02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_60er0")
+
+[node name="BossBullet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gl2gp")
+
+[node name="BossChangingPhase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xqb3e")
+
+[node name="BossLaserHold" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8qrkg")
+
+[node name="BossLaserOneHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_x3p25")
+
+[node name="DashOnCooldwon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1r458")
+
+[node name="DashReset" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ml8ro")
+
+[node name="PointIncrease" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_pogqe")
+
+[node name="PointPerfectDash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_wdv7k")
