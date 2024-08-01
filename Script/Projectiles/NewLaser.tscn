@@ -51,7 +51,7 @@ _data = {
 
 [node name="NewLaser" type="Node2D"]
 script = ExtResource("1_rvtjp")
-rotateSpeed = 0.005
+rotateSpeed = 0.007
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.62939e-06, 0)
@@ -75,6 +75,7 @@ position = Vector2(3.5, 8.5)
 shape = SubResource("RectangleShape2D_3is2s")
 
 [node name="NewLaser" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(7.07904, 8.96679)
 rotation = 1.5708
 scale = Vector2(1.08765, 3.03892)

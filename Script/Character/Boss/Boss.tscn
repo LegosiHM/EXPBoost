@@ -206,7 +206,7 @@ frame_progress = 0.357875
 [node name="pattern2" type="Node" parent="StateMachine"]
 script = ExtResource("8_cfsff")
 anticipateTime = 2.0
-phaseTime = 5.0
+phaseTime = 6.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern2"]
 visible = false
