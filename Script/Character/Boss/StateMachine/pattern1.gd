@@ -23,7 +23,7 @@ func Update(delta: float):
 	
 	if(timer.time_left <= 0):
 		animated_sprite_2d.visible = false
-		boss.shoot(boss.theta)
+		boss.shoot(2)
 		if (!once):
 			timer_2.start()
 			once = true;
