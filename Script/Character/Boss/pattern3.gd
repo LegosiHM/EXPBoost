@@ -26,8 +26,11 @@ func Update(delta: float):
 		boss.shoot(boss.theta)
 		if (!once):
 			timer_2.start()
+			AudioManager.boss_bullet.pitch_scale = 1.25
+			AudioManager.boss_bullet.play()
 			once = true;
 		if(timer_2.time_left == 0):
+			AudioManager.boss_bullet.stop()
 			Transitioned.emit(self, "idle")
 	else:
 		animated_sprite_2d.visible = true

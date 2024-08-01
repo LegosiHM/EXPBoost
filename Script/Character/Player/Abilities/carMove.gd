@@ -32,7 +32,7 @@ var steer_direction
 
 # Dash variables
 @export var dashSpeed: int = 250
-var dashCooldown: float = 0.5
+var dashCooldown: float = 1.0
 var dashDuration: float = 0.1
 var canDash: bool = true
 var isDashing: bool = false
@@ -51,6 +51,11 @@ var oneFrame2 : bool = false
 
 func _ready():
 	AudioManager.car_moving.play()
+
+func _process(delta):
+	if currentHealth < 0:
+		AudioManager.car_moving.stop()
+		get_tree().change_scene_to_file("res://Assets/Sprite/UI/LoseScene.tscn")
 
 #func _physics_process(delta: float) -> void:
 func _physics_process(delta):
@@ -94,6 +99,8 @@ func get_input():
 	
 	if Input.is_action_just_pressed("Dash") and canDash:
 		_start_perfect_dash()
+	elif Input.is_action_just_pressed("Dash"):
+		AudioManager.dash_on_cooldwon.play()
 	if isDashing:
 		if !oneFrame:
 			AudioManager.car_dash.play()
@@ -113,6 +120,7 @@ func _start_perfect_dash():
 	isDashing = false
 	await get_tree().create_timer(dashCooldown).timeout
 	canDash = true
+	AudioManager.dash_reset.play()
 		
 func _perfect_dash_feedback():
 	Engine.time_scale = 0.1
@@ -149,6 +157,7 @@ func _on_hurtbox_area_entered(hitbox):
 		self.currentHealth -= 1
 		screenoverlay.play("damaged")
 		hit_flash_anim_player.play("hit_flash")
+		AudioManager.car_get_hit_02.play()
 		iframe()
 		if self.currentHealth >= 0:
 			healthChanged.emit(currentHealth)

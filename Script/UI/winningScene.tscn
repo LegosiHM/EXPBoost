@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://igkw0bdabjob"]
+
+[ext_resource type="Script" path="res://Script/UI/winningScene.gd" id="1_ewu6t"]
+[ext_resource type="Texture2D" uid="uid://dqyndgh8msp37" path="res://Assets/Sprite/UI/WinningScreen.png" id="1_m2l5a"]
+
+[node name="WinningScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ewu6t")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_right = 1024.0
+offset_bottom = 720.0
+scale = Vector2(3.12211, 1)
+texture = ExtResource("1_m2l5a")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 1152.0
+offset_right = 2176.0
+offset_bottom = 720.0
+scale = Vector2(2.3481, 1)
+texture = ExtResource("1_m2l5a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 131.0
+offset_right = 1155.0
+offset_bottom = 720.0
+texture = ExtResource("1_m2l5a")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 581.0
+offset_top = 564.0
+offset_right = 589.0
+offset_bottom = 572.0
+scale = Vector2(17.5452, 7.16307)
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

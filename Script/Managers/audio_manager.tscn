@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d06fdlffrngx2"]
+[gd_scene load_steps=17 format=3 uid="uid://d06fdlffrngx2"]
 
 [ext_resource type="Script" path="res://Script/Managers/AudioManager.gd" id="1_mol4t"]
 [ext_resource type="AudioStream" uid="uid://bggdgl07jcvue" path="res://Assets/Audio/shot_single.wav" id="3_lolc2"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://oh60hcjjjfgo" path="res://Assets/Audio/UI/DashReset.mp3" id="13_ml8ro"]
 [ext_resource type="AudioStream" uid="uid://ociei3lrmwxn" path="res://Assets/Audio/UI/PointIncrease.mp3" id="14_pogqe"]
 [ext_resource type="AudioStream" uid="uid://8g6klixh5rmv" path="res://Assets/Audio/UI/PointPerfectDash.mp3" id="15_wdv7k"]
+[ext_resource type="AudioStream" uid="uid://byneey0aombp0" path="res://Assets/Audio/Background Music.mp3" id="16_73uj3"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_mol4t")
@@ -43,9 +44,11 @@ stream = ExtResource("7_60er0")
 
 [node name="BossBullet" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gl2gp")
+volume_db = -10.0
 
 [node name="BossChangingPhase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_xqb3e")
+volume_db = -15.0
 
 [node name="BossLaserHold" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8qrkg")
@@ -64,3 +67,7 @@ stream = ExtResource("14_pogqe")
 
 [node name="PointPerfectDash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_wdv7k")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_73uj3")
+volume_db = -15.0

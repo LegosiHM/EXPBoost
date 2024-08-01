@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c5ruslw2o6uk8"]
+[gd_scene load_steps=36 format=3 uid="uid://c5ruslw2o6uk8"]
 
 [ext_resource type="Script" path="res://Script/Character/Boss/Boss.gd" id="1_gnb6x"]
 [ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Script/Projectiles/Bullet.tscn" id="2_ydprj"]
@@ -109,111 +109,65 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g7r7"]
 radius = 80.0062
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtd54"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(0, 0, 512, 512)
+[sub_resource type="Animation" id="Animation_gk5rv"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3grmo")]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hihoc"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(512, 0, 512, 512)
+[sub_resource type="Animation" id="Animation_gngi5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_3grmo")]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbmon"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vayac"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxjf8"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(2048, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wunfp"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(2560, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3axen"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(3072, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvebu"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(0, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ff503"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(512, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_soglc"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(1024, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xe1e"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(1536, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4itsd"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(2048, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2mo1"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(2560, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlxpx"]
-atlas = ExtResource("14_g4sfi")
-region = Rect2(3072, 512, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ibt76"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mtd54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hihoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dbmon")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vayac")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dxjf8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wunfp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3axen")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvebu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ff503")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_soglc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4xe1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4itsd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x2mo1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xlxpx")
-}],
-"loop": true,
-"name": &"death",
-"speed": 5.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5fy0"]
+_data = {
+"Death": SubResource("Animation_gk5rv"),
+"RESET": SubResource("Animation_gngi5")
+}
 
 [node name="Boss" type="CharacterBody2D"]
 collision_mask = 4
@@ -221,13 +175,14 @@ script = ExtResource("1_gnb6x")
 alpha = 3.0
 bullet_node = ExtResource("2_ydprj")
 laser_node = ExtResource("3_yj5v3")
-phase = 1
+phase = 2
 
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.07
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_3grmo")
@@ -330,7 +285,7 @@ position = Vector2(620, 360)
 scale = Vector2(-0.7, 0.628)
 sprite_frames = SubResource("SpriteFrames_ecmqn")
 animation = &"rotato"
-frame_progress = 0.775129
+frame_progress = 0.182241
 
 [node name="Timer" type="Timer" parent="StateMachine"]
 wait_time = 0.5
@@ -356,13 +311,17 @@ shape = SubResource("CircleShape2D_2g7r7")
 [node name="DamageNumber" parent="." instance=ExtResource("13_k5kk6")]
 position = Vector2(0, -82)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(3, -1)
-scale = Vector2(0.45, 0.45)
-sprite_frames = SubResource("SpriteFrames_ibt76")
-animation = &"death"
-frame_progress = 0.237059
+[node name="BossDeath" type="Sprite2D" parent="."]
+position = Vector2(2, -0.999993)
+scale = Vector2(0.449219, 0.449219)
+texture = ExtResource("14_g4sfi")
+hframes = 7
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BossDeath"]
+libraries = {
+"": SubResource("AnimationLibrary_p5fy0")
+}
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

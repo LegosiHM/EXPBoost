@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgfs2x0xni1r0"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_o1rcl"]
+[ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://Script/Character/Player/car.tscn" id="2_i0qme"]
+[ext_resource type="Texture2D" uid="uid://cu54mr81myps7" path="res://Assets/Sprite/Boss/Background.png" id="2_machg"]
+[ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Script/Character/Boss/Boss.tscn" id="3_3vejh"]
+[ext_resource type="PackedScene" uid="uid://d0utjb2p2oicx" path="res://Script/UI/heart_container.tscn" id="4_snbi0"]
+[ext_resource type="Texture2D" uid="uid://cnssk7o24j5a2" path="res://Assets/Sprite/UI/DashIcon_NotReady.png" id="6_wo7fo"]
+[ext_resource type="Script" path="res://DashIcon.gd" id="7_1c64h"]
+[ext_resource type="PackedScene" uid="uid://dmb2utpcwil1r" path="res://Script/Effects/camera_2d.tscn" id="7_07raf"]
+[ext_resource type="Script" path="res://currentScoreLabel.gd" id="7_nsi7s"]
+
+[node name="Main" type="Node2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_o1rcl")
+
+[node name="Car" parent="." instance=ExtResource("2_i0qme")]
+position = Vector2(235, 344)
+scale = Vector2(0.5, 0.5)
+iframe_time = 2.0
+braking = -750
+dashSpeed = 300
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(639, 364)
+scale = Vector2(2, 2)
+texture = ExtResource("2_machg")
+
+[node name="Area2D" type="Area2D" parent="Background" groups=["Environment"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Area2D"]
+visibility_layer = 6
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-40.5, -160, -39.5, -154, -79, -149, -115.5, -140.5, -154, -125.5, -188, -104.5, -205.5, -89, -219.5, -71, -231.5, -53, -244.5, -25.5, -247.5, 3.5, -259.5, 5, -240, -60.5, -176.5, -122, -77, -156)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Background/Area2D"]
+visibility_layer = 6
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-248, 3.5, -239, 28, -232.5, 43.5, -219.5, 61.5, -200, 82, -181, 95, -147, 113.5, -120.5, 122, -93, 129, -62.5, 136.5, -29, 142, 2, 142.5, 2.5, 149, -129.5, 128.5, -213.5, 81.5, -259.5, 5)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Background/Area2D"]
+visibility_layer = 6
+position = Vector2(0, 1)
+polygon = PackedVector2Array(2, 142.5, 2.5, 149, 96, 137, 181, 103, 238, 50.5, 255.5, -5.5, 246.5, -5.5, 246, 6.5, 243, 19.5, 235.5, 37, 226.5, 52.5, 208.5, 74, 191, 89, 165.5, 103, 146.5, 113.5, 109.5, 126, 82.5, 132.5, 58.5, 138, 30.5, 141.5)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Background/Area2D"]
+visibility_layer = 6
+position = Vector2(0, 1)
+polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155.5, 71.5, -150, 108.5, -142.5, 138.5, -132.5, 161.5, -120.5, 184, -108, 206.5, -88.5, 223, -67.5, 235.5, -43.5, 245.5, -21.5, 247, -5, 255.5, -5.5, 245, -51, 211, -92.5, 168.5, -121, 161, -129, 81.5, -153.5)
+
+[node name="Boss" parent="." instance=ExtResource("3_3vejh")]
+position = Vector2(620, 341)
+alpha = 7.0
+rotation_speed = null
+maxHealth = null
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="heartContainer" parent="CanvasLayer" instance=ExtResource("4_snbi0")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_vertical = 0
+
+[node name="DashCooldown" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1088.0
+offset_top = 539.0
+offset_right = 1408.0
+offset_bottom = 859.0
+scale = Vector2(0.668406, 0.668406)
+texture = ExtResource("6_wo7fo")
+script = ExtResource("7_1c64h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visibility_layer = 6
+position = Vector2(639, 368)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-40.5, -160, -39.5, -154, -79, -149, -115.5, -140.5, -154, -125.5, -188, -104.5, -205.5, -89, -219.5, -71, -231.5, -53, -244.5, -25.5, -247.5, 3.5, -259.5, 5, -240, -60.5, -176.5, -122, -77, -156)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+visibility_layer = 6
+position = Vector2(639, 368)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-248, 3.5, -239, 28, -232.5, 43.5, -219.5, 61.5, -200, 82, -181, 95, -147, 113.5, -120.5, 122, -93, 129, -62.5, 136.5, -29, 142, 2, 142.5, 2.5, 149, -129.5, 128.5, -213.5, 81.5, -259.5, 5)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+visibility_layer = 6
+position = Vector2(639, 368)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(2, 142.5, 2.5, 149, 96, 137, 181, 103, 238, 50.5, 255.5, -5.5, 246.5, -5.5, 246, 6.5, 243, 19.5, 235.5, 37, 226.5, 52.5, 208.5, 74, 191, 89, 165.5, 103, 146.5, 113.5, 109.5, 126, 82.5, 132.5, 58.5, 138, 30.5, 141.5)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+visibility_layer = 6
+position = Vector2(639, 368)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-40.5, -160, -39.5, -153.5, -27.5, -156, 27.5, -155.5, 71.5, -150, 108.5, -142.5, 138.5, -132.5, 161.5, -120.5, 184, -108, 206.5, -88.5, 223, -67.5, 235.5, -43.5, 245.5, -21.5, 247, -5, 255.5, -5.5, 245, -51, 211, -92.5, 168.5, -121, 161, -129, 81.5, -153.5)
+
+[node name="Camera2D" parent="." instance=ExtResource("7_07raf")]
+position = Vector2(640, 360)
+
+[node name="ScoreLabel" type="StaticBody2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(2, 2)
+
+[node name="currentScoreLabel" type="RichTextLabel" parent="ScoreLabel"]
+offset_left = 12.0
+offset_top = 9.5
+offset_right = 113.0
+offset_bottom = 49.5
+text = "Score"
+tab_size = 9
+script = ExtResource("7_nsi7s")
+
+[editable path="Camera2D"]

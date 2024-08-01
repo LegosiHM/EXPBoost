@@ -15,7 +15,7 @@ extends Node
 @onready var dash_reset = $DashReset
 @onready var point_increase = $PointIncrease
 @onready var point_perfect_dash = $PointPerfectDash
-
+@onready var background_music = $BackgroundMusic
 
 const DOOM_CUT = preload("res://Assets/Audio/Doom Cut.mp3")
 #const FLUFFING_A_DUCK = preload("res://Assets/Audio/Fluffing a Duck.mp3")

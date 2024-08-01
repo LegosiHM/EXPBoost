@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://coq80ywpgwrqf"]
+
+[ext_resource type="Script" path="res://Script/UI/LoseSceneButton.gd" id="1_2kn41"]
+[ext_resource type="Texture2D" uid="uid://b35l3666bq0eq" path="res://Assets/Sprite/UI/DeathScreen.png" id="1_t6gr5"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_kvi1r"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ifi7e"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2kn41")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.667354, 0.667354)
+texture = ExtResource("1_t6gr5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 521.0
+offset_right = 563.0
+offset_bottom = 529.0
+scale = Vector2(21.298, 7.20699)
+icon = SubResource("ImageTexture_kvi1r")
+flat = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 622.0
+offset_right = 572.0
+offset_bottom = 630.0
+scale = Vector2(19.1765, 8.01794)
+icon = SubResource("ImageTexture_ifi7e")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

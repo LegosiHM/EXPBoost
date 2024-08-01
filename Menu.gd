@@ -6,3 +6,6 @@ func _on_texture_button_2_pressed():
 
 func _on_texture_button_pressed():
 	get_tree().change_scene_to_file("res://Main.tscn")
+
+func _ready():
+	AudioManager.background_music.play()
