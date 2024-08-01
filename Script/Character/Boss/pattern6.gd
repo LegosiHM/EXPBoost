@@ -1,5 +1,5 @@
 extends State
-class_name pattern1
+class_name pattern6
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var boss = $"../.."
 @onready var timer = $"../Timer"
@@ -7,7 +7,7 @@ class_name pattern1
 @export var anticipateTime : float
 @export var phaseTime: float
 var once : bool
-var alpha: float = 2.0
+var alpha: float = 6.0
 
 func Enter():
 	once = false

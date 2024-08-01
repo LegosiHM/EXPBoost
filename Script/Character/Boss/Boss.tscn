@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c5ruslw2o6uk8"]
+[gd_scene load_steps=35 format=3 uid="uid://c5ruslw2o6uk8"]
 
 [ext_resource type="Script" path="res://Script/Character/Boss/Boss.gd" id="1_gnb6x"]
 [ext_resource type="PackedScene" uid="uid://bw8jlp1t7ea74" path="res://Script/Projectiles/Bullet.tscn" id="2_ydprj"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" path="res://Script/Character/Boss/StateMachine/pattern2.gd" id="8_cfsff"]
 [ext_resource type="Texture2D" uid="uid://crtolg4pm50q5" path="res://Assets/Sprite/AlertPhotoBullet.png" id="8_wcde4"]
 [ext_resource type="Texture2D" uid="uid://dhuu3gbr56g4o" path="res://Assets/Sprite/AlertPhotoLasor.png" id="9_5tp5k"]
+[ext_resource type="Script" path="res://Script/Character/Boss/pattern3.gd" id="9_w86sd"]
+[ext_resource type="Script" path="res://Script/Character/Boss/pattern4.gd" id="10_xvr72"]
+[ext_resource type="Script" path="res://Script/Character/Boss/pattern5.gd" id="11_00xur"]
+[ext_resource type="Script" path="res://Script/Character/Boss/pattern6.gd" id="12_8cprx"]
 [ext_resource type="PackedScene" uid="uid://bpmv58n15njej" path="res://Script/Character/Boss/healthbar.tscn" id="12_k3amj"]
 [ext_resource type="PackedScene" uid="uid://duf6qwdvbelwi" path="res://Script/Character/Player/Abilities/hurtbox.tscn" id="12_x2n7e"]
 [ext_resource type="PackedScene" uid="uid://cgv18ufbjb4es" path="res://Script/Effects/DamageNumber.tscn" id="13_k5kk6"]
@@ -187,15 +191,67 @@ initial_state = NodePath("pattern1")
 
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_ny2l7")
-phaseTime = 7.0
-patterns = Array[StringName]([&"pattern1", &"pattern2"])
+phaseTime = 5.0
+patterns = Array[StringName]([&"pattern1", &"pattern2", &"pattern3", &"pattern4", &"pattern5", &"pattern6"])
 
 [node name="pattern1" type="Node" parent="StateMachine"]
 script = ExtResource("7_nhxwo")
-anticipateTime = 1.0
+anticipateTime = 2.0
 phaseTime = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern1"]
+visible = false
+position = Vector2(620, 161)
+scale = Vector2(0.878858, 0.878858)
+sprite_frames = SubResource("SpriteFrames_3dod7")
+animation = &"bullet"
+frame_progress = 0.357875
+
+[node name="pattern3" type="Node" parent="StateMachine"]
+script = ExtResource("9_w86sd")
+anticipateTime = 2.0
+phaseTime = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern3"]
+visible = false
+position = Vector2(620, 161)
+scale = Vector2(0.878858, 0.878858)
+sprite_frames = SubResource("SpriteFrames_3dod7")
+animation = &"bullet"
+frame_progress = 0.357875
+
+[node name="pattern4" type="Node" parent="StateMachine"]
+script = ExtResource("10_xvr72")
+anticipateTime = 2.0
+phaseTime = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern4"]
+visible = false
+position = Vector2(620, 161)
+scale = Vector2(0.878858, 0.878858)
+sprite_frames = SubResource("SpriteFrames_3dod7")
+animation = &"bullet"
+frame_progress = 0.357875
+
+[node name="pattern5" type="Node" parent="StateMachine"]
+script = ExtResource("11_00xur")
+anticipateTime = 2.0
+phaseTime = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern5"]
+visible = false
+position = Vector2(620, 161)
+scale = Vector2(0.878858, 0.878858)
+sprite_frames = SubResource("SpriteFrames_3dod7")
+animation = &"bullet"
+frame_progress = 0.357875
+
+[node name="pattern6" type="Node" parent="StateMachine"]
+script = ExtResource("12_8cprx")
+anticipateTime = 2.0
+phaseTime = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern6"]
 visible = false
 position = Vector2(620, 161)
 scale = Vector2(0.878858, 0.878858)
