@@ -11,6 +11,7 @@ size = Vector2(11, 11)
 [node name="Bullet" type="Area2D" groups=["PlayerBullet"]]
 collision_layer = 16
 script = ExtResource("1_uo1p2")
+speed = 750
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.25, 4.25)

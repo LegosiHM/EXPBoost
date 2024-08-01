@@ -193,7 +193,7 @@ patterns = Array[StringName]([&"pattern1", &"pattern2"])
 [node name="pattern1" type="Node" parent="StateMachine"]
 script = ExtResource("7_nhxwo")
 anticipateTime = 1.0
-phaseTime = 2.0
+phaseTime = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StateMachine/pattern1"]
 visible = false
