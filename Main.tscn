@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgfs2x0xni1r0"]
+[gd_scene load_steps=10 format=3 uid="uid://cgfs2x0xni1r0"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_o1rcl"]
 [ext_resource type="PackedScene" uid="uid://cchsa1gv6nht0" path="res://Script/Character/Player/car.tscn" id="2_i0qme"]
 [ext_resource type="Texture2D" uid="uid://cu54mr81myps7" path="res://Assets/Sprite/Boss/Background.png" id="2_machg"]
 [ext_resource type="PackedScene" uid="uid://c5ruslw2o6uk8" path="res://Script/Character/Boss/Boss.tscn" id="3_3vejh"]
 [ext_resource type="PackedScene" uid="uid://d0utjb2p2oicx" path="res://Script/UI/heart_container.tscn" id="4_snbi0"]
+[ext_resource type="Texture2D" uid="uid://cnssk7o24j5a2" path="res://Assets/Sprite/UI/DashIcon_NotReady.png" id="6_wo7fo"]
+[ext_resource type="Script" path="res://DashIcon.gd" id="7_1c64h"]
 [ext_resource type="PackedScene" uid="uid://dmb2utpcwil1r" path="res://Script/Effects/camera_2d.tscn" id="7_07raf"]
 [ext_resource type="Script" path="res://currentScoreLabel.gd" id="7_nsi7s"]
 
@@ -58,6 +60,15 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -70.0
 grow_vertical = 0
+
+[node name="DashCooldown" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1088.0
+offset_top = 539.0
+offset_right = 1408.0
+offset_bottom = 859.0
+scale = Vector2(0.668406, 0.668406)
+texture = ExtResource("6_wo7fo")
+script = ExtResource("7_1c64h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
