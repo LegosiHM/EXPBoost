@@ -54,6 +54,8 @@ func _ready():
 
 func _process(delta):
 	if currentHealth < 0:
+		AudioManager.boss_laser_hold.stop()
+		AudioManager.boss_changing_phase.stop()
 		AudioManager.car_moving.stop()
 		get_tree().change_scene_to_file("res://Assets/Sprite/UI/LoseScene.tscn")
 
