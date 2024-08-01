@@ -26,7 +26,7 @@ func get_vector(angle):
 func shoot(angle):
 	var bullet = bullet_node.instantiate()
 	bullet.position = global_position
-	bullet.direction = get_vector(angle)
+	bullet.direction = get_vector(angle).normalized()
 	get_tree().current_scene.call_deferred("add_child", bullet)
 	
 func spawn_laser(angle):

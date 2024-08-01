@@ -230,7 +230,7 @@ offset_top = -279.0
 offset_right = 261.0
 offset_bottom = -254.0
 
-[node name="Hurtbox" parent="." groups=["Environment"] instance=ExtResource("12_x2n7e")]
+[node name="Hurtbox" parent="." groups=["Boss"] instance=ExtResource("12_x2n7e")]
 collision_mask = 16
 monitorable = true
 
